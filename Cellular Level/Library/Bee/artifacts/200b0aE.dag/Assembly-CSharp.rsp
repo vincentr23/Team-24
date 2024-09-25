@@ -358,6 +358,9 @@
 "Assets/Model/3D Character Dummy/_ExampleScene/Scripts/DummyRPMaterialLoader.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RootmotionReset.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RPMaterialLoader.cs"
+"Assets/Scripts/MoveCamera.cs"
+"Assets/Scripts/PlayerAnimations.cs"
+"Assets/Scripts/PlayerCam.cs"
 "Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 /deterministic
