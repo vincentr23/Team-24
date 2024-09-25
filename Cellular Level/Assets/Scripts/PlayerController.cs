@@ -3,87 +3,82 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
+using static Models;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
-    public float speed = 0;
-    public float groundDrag;
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
-    private Rigidbody rb; 
-    public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-    Vector3 moveDirection;
-    public float crouch_speed = 0;
-    private bool crouching = false;
+    private CharacterController characterController;
+    private PlayerMovement playerMovement;
+    public Vector2 input_Move;
+    public Vector2 input_Look;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent <Rigidbody>(); 
-        rb.freezeRotation = true;
-    }
-    /* void OnMove (InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>(); 
-        movementX = movementVector.x; 
-        movementY = movementVector.y;
-    }
-    */
-    private void Crouch()
-    {
-        float temp = speed;
-        speed = crouch_speed;
-        crouch_speed = temp;
-        crouching = !crouching;
-    }
-   private void FixedUpdate() 
-   {
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
+    private Vector3 newCamRotate;
+    private Vector3 newPlayerRotate;
 
-        // Apply force to the Rigidbody to move the player.
-        rb.AddForce(movement * speed); 
+    [Header("References")]
+    public Transform cameraHolder;
 
-       // MovePlayer();
-   }
+    [Header("Settings")]
+    public PlayerSettingsModel playerSettings;
+    public float viewClampYMin = -70;
+    public float viewClampYMax = 80;
 
-    // Update is called once per frame
-    void Update()
-    {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        if (Input.GetButtonDown("Crouch"))
-        {
-            Crouch();
-        }
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
-    }
-    private void MyInput() 
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-    }
-    private void MovePlayer()
-    {
-        //moveDirection = (orientation.forward * verticalInput) + (orientation.right * horizontalInput);
-        Vector3 movement = new Vector3 (moveDirection.x, 0.0f, moveDirection.z);
 
-        rb.AddForce(movement * speed * 10f);
-    }
-    void OnMove(InputValue movementValue)
+    private void Awake()
     {
-        // Convert the input value into a Vector2 for movement.
-        Vector2 movementVector = movementValue.Get<Vector2>();
+        // hides cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-        // Store the X and Y components of the movement.
-        movementX = movementVector.x; 
-        movementY = movementVector.y; 
+        playerMovement = new PlayerMovement();
+
+        playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
+        playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
+
+        playerMovement.Enable();
+        newCamRotate = cameraHolder.localRotation.eulerAngles;
+        newPlayerRotate = transform.localRotation.eulerAngles;
+        characterController = GetComponent<CharacterController>();
     }
 
+    private void Update()
+    {
+        CalculateMove();
+        CalculateLook();
+    }
+
+    private void CalculateLook()
+    {
+        newPlayerRotate.y += playerSettings.ViewXSens * input_Look.x * Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(newPlayerRotate);
+
+        newCamRotate.x += -playerSettings.ViewYSens * input_Look.y * Time.deltaTime;
+        newCamRotate.x = Mathf.Clamp(newCamRotate.x, viewClampYMin, viewClampYMax);
+        cameraHolder.localRotation = Quaternion.Euler(newCamRotate);
+    }
+    private void CalculateMove()
+    {
+        var verticalSpeed = playerSettings.WalkingForwardSpeed * input_Move.y * Time.deltaTime;
+        var horizontalSpeed = playerSettings.WalkingStrafeSpeed * input_Move.x * Time.deltaTime;
+
+        var newMoveSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
+        newMoveSpeed = transform.TransformDirection(newMoveSpeed);
+
+        characterController.Move(newMoveSpeed);
+    }
+    public bool IsRunning()
+    {
+        if ((input_Move.y > -0.1) && (input_Move.y < 0.1) &&
+            (input_Move.x > -0.1) && (input_Move.x < 0.1))
+            return false;
+        else return true;
+    }
+    public float GetXVel()
+    {
+        return input_Move.x;
+    }
+    public float GetYVel()
+    {
+        return input_Move.y;
+    }
 }
