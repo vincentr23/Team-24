@@ -81,4 +81,13 @@ public class PlayerController : MonoBehaviour
     {
         return input_Move.y;
     }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+            other.gameObject.SetActive(false);
+    }
+    public PlayerMovement GetInput()
+    {
+        return playerMovement;
+    }
 }
