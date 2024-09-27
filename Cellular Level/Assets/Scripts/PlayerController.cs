@@ -7,13 +7,23 @@ using static Models;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     private CharacterController characterController;
     private PlayerMovement playerMovement;
     public Vector2 input_Move;
     public Vector2 input_Look;
-
     private Vector3 newCamRotate;
     private Vector3 newPlayerRotate;
+
+    [Header("Gravity")]
+    public float gravityAmount;
+    public float gravityMin;
+    public float playerGravity;
+
+    [Header("Jump")]
+    // jumping variables
+    public Vector3 jumpForce;
+    private Vector3 jumpForceVel;
 
     [Header("References")]
     public Transform cameraHolder;
@@ -34,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
         playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
+        playerMovement.Player.Jump.performed += e => Jump();
 
         playerMovement.Enable();
         newCamRotate = cameraHolder.localRotation.eulerAngles;
@@ -45,13 +56,16 @@ public class PlayerController : MonoBehaviour
     {
         CalculateMove();
         CalculateLook();
+        CalculateJump();
     }
 
     private void CalculateLook()
     {
+         // when we move left and right, we want our body to turn
         newPlayerRotate.y += playerSettings.ViewXSens * input_Look.x * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(newPlayerRotate);
 
+        // when we look up and down, only camera moves
         newCamRotate.x += -playerSettings.ViewYSens * input_Look.y * Time.deltaTime;
         newCamRotate.x = Mathf.Clamp(newCamRotate.x, viewClampYMin, viewClampYMax);
         cameraHolder.localRotation = Quaternion.Euler(newCamRotate);
@@ -64,8 +78,24 @@ public class PlayerController : MonoBehaviour
         var newMoveSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
         newMoveSpeed = transform.TransformDirection(newMoveSpeed);
 
+        if (playerGravity > gravityMin && jumpForce.y < 0.1f)
+        {
+            playerGravity -= gravityAmount * Time.deltaTime;
+        }
+        if (playerGravity < -1 && characterController.isGrounded)
+        {
+            playerGravity = -1;
+        }
+        if (jumpForce.y > 0.1f)
+        {
+            playerGravity = 0;
+        }
+        newMoveSpeed.y += playerGravity;
+        newMoveSpeed += jumpForce * 0.1f;
         characterController.Move(newMoveSpeed);
     }
+
+    // for animation
     public bool IsRunning()
     {
         if ((input_Move.y > -0.1) && (input_Move.y < 0.1) &&
@@ -80,5 +110,23 @@ public class PlayerController : MonoBehaviour
     public float GetYVel()
     {
         return input_Move.y;
+    }
+    private void CalculateJump()
+    {
+        jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero,
+            ref jumpForceVel, playerSettings.JumpingFalloff);
+    }
+    private void Jump()
+    {
+        if (!characterController.isGrounded)
+        {
+            return;
+        }
+
+        jumpForce = Vector3.up * playerSettings.JumpingHeight;
+    }
+    public PlayerMovement GetInput()
+    {
+        return playerMovement;
     }
 }

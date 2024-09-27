@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 1646375779}
   - component: {fileID: 1646375778}
   - component: {fileID: 1646375777}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,6 +668,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: gravityMin
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: jumpForce.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: readyToJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: jumpCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: playerHeight
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: airMultiplier
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: gravityAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: playerSettings.JumpingHeight
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: playerSettings.JumpingFalloff
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140812734216896323, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5054936402999474786, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -678,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579235689994199256, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 5579235689994199256, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -712,7 +760,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5751624008388446667, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751624008388446667, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169160549166897754, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990726176517748360, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_Height
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990726176517748360, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5751624008388446667, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
