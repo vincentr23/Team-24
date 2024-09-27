@@ -364,10 +364,13 @@
 "Assets/Model/3D Character Dummy/_ExampleScene/Scripts/DummyRPMaterialLoader.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RootmotionReset.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RPMaterialLoader.cs"
-"Assets/Scripts/Models.cs"
-"Assets/Scripts/MoveCamera.cs"
-"Assets/Scripts/PlayerAnimations.cs"
-"Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/Interactables/IInteractable.cs"
+"Assets/Scripts/Interactables/Interactor.cs"
+"Assets/Scripts/Interactables/Pickups.cs"
+"Assets/Scripts/Player Scripts/Models.cs"
+"Assets/Scripts/Player Scripts/MoveCamera.cs"
+"Assets/Scripts/Player Scripts/PlayerAnimations.cs"
+"Assets/Scripts/Player Scripts/PlayerController.cs"
 -langversion:9.0
 /deterministic
 /optimize+
