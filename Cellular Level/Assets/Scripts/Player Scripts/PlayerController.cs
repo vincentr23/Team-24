@@ -15,6 +15,17 @@ public class PlayerController : MonoBehaviour
     private Vector3 newCamRotate;
     private Vector3 newPlayerRotate;
 
+    [Header("Gravity")]
+    public float gravityAmount;
+    public float gravityMin;
+    public float playerGravity;
+
+    [Header("Jump")]
+    // jumping variables
+    public Vector3 jumpForce;
+    private Vector3 jumpForceVel;
+
+
     [Header("References")]
     public Transform cameraHolder;
 
@@ -34,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
         playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
+        playerMovement.Player.Jump.performed += e => Jump();
 
         playerMovement.Enable();
         newCamRotate = cameraHolder.localRotation.eulerAngles;
@@ -45,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         CalculateMove();
         CalculateLook();
+        CalculateJump();
     }
 
     private void CalculateLook()
@@ -64,6 +77,20 @@ public class PlayerController : MonoBehaviour
         var newMoveSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
         newMoveSpeed = transform.TransformDirection(newMoveSpeed);
 
+        if (playerGravity > gravityMin && jumpForce.y < 0.1f)
+        {
+            playerGravity -= gravityAmount * Time.deltaTime;
+        }
+        if (playerGravity < -1 && characterController.isGrounded)
+        {
+            playerGravity = -1;
+        }
+        if (jumpForce.y > 0.1f)
+        {
+            playerGravity = 0;
+        }
+        newMoveSpeed.y += playerGravity;
+        newMoveSpeed += jumpForce * 0.1f;
         characterController.Move(newMoveSpeed);
     }
     public bool IsRunning()
@@ -86,8 +113,26 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("PickUp"))
             other.gameObject.SetActive(false);
     }
+    private void CalculateJump()
+    {
+        jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero,
+            ref jumpForceVel, playerSettings.JumpingFalloff);
+    }
+    private void Jump()
+    {
+        if (!characterController.isGrounded)
+        {
+            return;
+        }
+
+        jumpForce = Vector3.up * playerSettings.JumpingHeight;
+    }
     public PlayerMovement GetInput()
     {
         return playerMovement;
+    }
+    public bool Grounded()
+    {
+        return characterController.isGrounded;
     }
 }

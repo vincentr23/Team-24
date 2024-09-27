@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Models
 {
-    #region - Player -
+    #region #region - Player -
     [System.Serializable]
     public class PlayerSettingsModel
     {
@@ -16,6 +16,10 @@ public class Models
         public float WalkingForwardSpeed;
         public float WalkingBackwardSpeed;
         public float WalkingStrafeSpeed;
+
+        [Header("Jump")]
+        public float JumpingHeight;
+        public float JumpingFalloff;
     }
 
     #endregion

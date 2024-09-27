@@ -792,12 +792,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: gravityMin
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: gravityAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: playerSettings.ViewXSens
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: playerSettings.ViewYSens
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: playerSettings.JumpingHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: playerSettings.JumpingFalloff
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: playerSettings.WalkingStrafeSpeed
@@ -810,6 +826,10 @@ PrefabInstance:
     - target: {fileID: 856598491197599086, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: playerSettings.WalkingBackwardSpeed
       value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140812734216896323, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054936402999474786, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
       propertyPath: m_Name
@@ -859,7 +879,12 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 119
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6990726176517748360, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5751624008388446667, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5579235689994199256, guid: ab2c6fa2dd263bf409801f5a1045bd9f, type: 3}

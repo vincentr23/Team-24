@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeAnimation : MonoBehaviour
+public class PlayerAnimations: MonoBehaviour
 {
 
     Animator anim;
@@ -24,6 +24,8 @@ public class ChangeAnimation : MonoBehaviour
         if (playerController.GetInput().Player.Fire.IsPressed())
            anim.SetTrigger("Gather");
         else anim.ResetTrigger("Gather");
-
+        if (playerController.GetInput().Player.Jump.IsPressed())
+            anim.SetTrigger("Jump");
+        else anim.ResetTrigger("Jump");
     }
 }
