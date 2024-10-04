@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimations: MonoBehaviour
 {
@@ -21,11 +22,14 @@ public class PlayerAnimations: MonoBehaviour
         anim.SetBool("Running", playerController.IsRunning());
         anim.SetFloat("Vertical", playerController.GetYVel());
         anim.SetFloat("Horizontal", playerController.GetXVel());
-        if (playerController.GetInput().Player.Fire.IsPressed())
-           anim.SetTrigger("Gather");
-        else anim.ResetTrigger("Gather");
-        if (playerController.GetInput().Player.Jump.IsPressed())
-            anim.SetTrigger("Jump");
-        else anim.ResetTrigger("Jump");
+        //anim.ResetTrigger("Jump");
+    }
+    public void JumpAnim()
+    {
+        anim.SetTrigger("Jump");
+    }
+    public void GatherAnim()
+    {
+        anim.SetTrigger("Gather");
     }
 }

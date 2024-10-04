@@ -8,7 +8,7 @@ using static Models;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController characterController;
-    private PlayerMovement playerMovement;
+    //private PlayerMovement playerMovement;
     public Vector2 input_Move;
     public Vector2 input_Look;
 
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     // jumping variables
+    private bool jumped;
     public Vector3 jumpForce;
     private Vector3 jumpForceVel;
 
@@ -34,23 +35,25 @@ public class PlayerController : MonoBehaviour
     public float viewClampYMin = -70;
     public float viewClampYMax = 80;
 
+    Animator anim;
+
 
     private void Awake()
     {
         // hides cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        //playerMovement = new PlayerMovement();
 
-        playerMovement = new PlayerMovement();
+        //playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
+        //playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
+        //playerMovement.Player.Jump.performed += e => Jump();
 
-        playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
-        playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
-        playerMovement.Player.Jump.performed += e => Jump();
-
-        playerMovement.Enable();
+        //playerMovement.Enable();
         newCamRotate = cameraHolder.localRotation.eulerAngles;
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -58,6 +61,20 @@ public class PlayerController : MonoBehaviour
         CalculateMove();
         CalculateLook();
         CalculateJump();
+    }
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        input_Move = context.ReadValue<Vector2>();
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        input_Look = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jumped = context.action.triggered;
     }
 
     private void CalculateLook()
@@ -76,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
         var newMoveSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
         newMoveSpeed = transform.TransformDirection(newMoveSpeed);
+
+        if (jumped) Jump();
 
         if (playerGravity > gravityMin && jumpForce.y < 0.1f)
         {
@@ -124,12 +143,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
+        anim.SetTrigger("Jump");
         jumpForce = Vector3.up * playerSettings.JumpingHeight;
-    }
-    public PlayerMovement GetInput()
-    {
-        return playerMovement;
     }
     public bool Grounded()
     {
