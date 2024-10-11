@@ -63,11 +63,15 @@
     <Compile Include="Assets\PolyLabs\PNTD\Free\PNTDSampleConsts.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\Models.cs" />
+    <Compile Include="Assets\FirstPersonController.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RPMaterialLoader.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RootmotionReset.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerAnimations.cs" />
     <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
+    <Compile Include="Assets\HeartbeatPulse.cs" />
     <Compile Include="Assets\Scripts\Interactables\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\Spawn.cs" />
+    <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyPatrol.cs" />
     <Compile Include="Assets\Input\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />

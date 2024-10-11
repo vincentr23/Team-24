@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public float viewClampYMin = -70;
     public float viewClampYMax = 80;
 
+
     Animator anim;
 
 
@@ -43,17 +44,12 @@ public class PlayerController : MonoBehaviour
         // hides cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //playerMovement = new PlayerMovement();
 
-        //playerMovement.Player.Move.performed += e => input_Move = e.ReadValue<Vector2>();
-        //playerMovement.Player.Look.performed += e => input_Look = e.ReadValue<Vector2>();
-        //playerMovement.Player.Jump.performed += e => Jump();
-
-        //playerMovement.Enable();
         newCamRotate = cameraHolder.localRotation.eulerAngles;
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+
     }
 
     private void Update()
