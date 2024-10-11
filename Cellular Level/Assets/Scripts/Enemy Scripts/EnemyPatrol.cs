@@ -70,17 +70,20 @@ public class EnemyPatrol : MonoBehaviour
             {
                 animator.SetBool("isRunning", true);
                 animator.SetBool("isWalking", false);
+                animator.speed = agentSpeed / patrolSpeed;
             }
             else // Walking if speed is lower
             {
                 animator.SetBool("isRunning", false);
                 animator.SetBool("isWalking", true);
+                animator.speed = agentSpeed / patrolSpeed;
             }
         }
         else // If the monster is idle
         {
             animator.SetBool("isRunning", false);
             animator.SetBool("isWalking", false);
+            animator.speed = 1f;
         }
     }
 

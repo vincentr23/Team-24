@@ -546,8 +546,8 @@ MonoBehaviour:
   - {fileID: 483936634}
   chaseDistance: 50
   fieldOfViewAngle: 110
-  patrolSpeed: 2
-  chaseSpeed: 8
+  patrolSpeed: 3
+  chaseSpeed: 15
   deviationDistance: 5
   deviationTime: 3
 --- !u!195 &251996616
