@@ -374,6 +374,7 @@
 "Assets/PolyLabs/BonusAssets/Rotator.cs"
 "Assets/PolyLabs/PNTD/Free/PNTDSampleConsts.cs"
 "Assets/Scripts/Enemy Scripts/EnemyPatrol.cs"
+"Assets/Scripts/Game Manager.cs"
 "Assets/Scripts/Interactables/IInteractable.cs"
 "Assets/Scripts/Interactables/Interactor.cs"
 "Assets/Scripts/Interactables/Pickups.cs"

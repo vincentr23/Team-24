@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Main Camera
   - PickUp
+  - Pickup Spawn
   layers:
   - Default
   - TransparentFX
