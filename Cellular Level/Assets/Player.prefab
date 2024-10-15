@@ -412,6 +412,11 @@ MonoBehaviour:
   gravityMin: 0
   playerGravity: 0
   jumpForce: {x: 0, y: 0, z: 0}
+  sprintMin: 10
+  maxStam: 200
+  stamina: 100
+  stamWaitVal: 50
+  stamWait: 0
   cameraHolder: {fileID: 7651023456395361231}
   playerSettings:
     ViewXSens: 100
@@ -419,10 +424,12 @@ MonoBehaviour:
     WalkingForwardSpeed: 10
     WalkingBackwardSpeed: 10
     WalkingStrafeSpeed: 10
+    RunningForwardSpeed: 15
     JumpingHeight: 0.75
     JumpingFalloff: 0.5
   viewClampYMin: -70
   viewClampYMax: 80
+  m_initialPosition: {fileID: 0}
 --- !u!114 &2721175572324213904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +630,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ba4552d5-d7dd-4fc8-a177-cb4ca8e57754
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 856598491197599086}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 200f9ac1-5ef5-4b9b-b29a-c0c2e495ec6e
+    m_ActionName: Player/Sprint[/Keyboard/leftShift,/XInputControllerWindows/leftStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

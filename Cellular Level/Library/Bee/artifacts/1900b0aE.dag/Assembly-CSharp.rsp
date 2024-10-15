@@ -378,6 +378,7 @@
 "Assets/Scripts/Interactables/IInteractable.cs"
 "Assets/Scripts/Interactables/Interactor.cs"
 "Assets/Scripts/Interactables/Pickups.cs"
+"Assets/Scripts/MenuJoin.cs"
 "Assets/Scripts/Player Scripts/Models.cs"
 "Assets/Scripts/Player Scripts/MoveCamera.cs"
 "Assets/Scripts/Player Scripts/PlayerAnimations.cs"
