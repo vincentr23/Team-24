@@ -369,12 +369,17 @@
 "Assets/Model/3D Character Dummy/_ExampleScene/Scripts/DummyRPMaterialLoader.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RootmotionReset.cs"
 "Assets/Movement/Basic Motions/_ExampleScene/Scripts/RPMaterialLoader.cs"
+"Assets/Scripts/HealthManager.cs"
+"Assets/Scripts/ItemCollectCounter.cs"
+"Assets/Scripts/ItemSpawner.cs"
 "Assets/Scripts/Models.cs"
 "Assets/Scripts/MoveCamera.cs"
 "Assets/Scripts/PlayerAnimations.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/SceneSwitch.cs"
 "Assets/Scripts/SpaceshipController.cs"
 "Assets/Scripts/SpaceshipSpawner.cs"
+"Assets/Scripts/UpdateHealthAndLevel.cs"
 -langversion:9.0
 /deterministic
 /optimize+

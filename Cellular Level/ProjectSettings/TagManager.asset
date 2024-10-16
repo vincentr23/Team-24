@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Main Camera
+  - Oxygen
   layers:
   - Default
   - TransparentFX
