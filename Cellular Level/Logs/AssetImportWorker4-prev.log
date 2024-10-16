@@ -1,0 +1,320 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.43f1 (85497d293fa1) revision 8735101'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 32688 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Unity\2022.3.43f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+D:/Projects/Team-24/Cellular Level
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+64943
+Successfully changed project path to: D:/Projects/Team-24/Cellular Level
+D:/Projects/Team-24/Cellular Level
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [6828]  Target information:
+
+Player connection [6828]  * "[IP] 192.168.4.48 [Port] 0 [Flags] 2 [Guid] 1999039831 [EditorId] 1999039831 [Version] 1048832 [Id] WindowsEditor(7,VeryNiceBigBoy) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [6828]  * "[IP] 100.79.215.85 [Port] 0 [Flags] 2 [Guid] 1999039831 [EditorId] 1999039831 [Version] 1048832 [Id] WindowsEditor(7,VeryNiceBigBoy) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [6828] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [6828] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Refreshing native plugins compatible for Editor in 15.17 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.43f1 (85497d293fa1)
+[Subsystems] Discovering subsystems at path D:/Unity/2022.3.43f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Projects/Team-24/Cellular Level/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2206)
+    Vendor:   NVIDIA
+    VRAM:     10053 MB
+    Driver:   32.0.15.6094
+Initialize mono
+Mono path[0] = 'D:/Unity/2022.3.43f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2022.3.43f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unity/2022.3.43f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56724
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity/2022.3.43f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.021051 seconds.
+- Loaded All Assemblies, in  1.241 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.596 seconds
+Domain Reload Profiling: 1837ms
+	BeginReloadAssembly (698ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (63ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (107ms)
+	LoadAllAssembliesAndSetupDomain (353ms)
+		LoadAssemblies (697ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (349ms)
+			TypeCache.Refresh (346ms)
+				TypeCache.ScanAssembly (311ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (596ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (488ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (18ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (4ms)
+			ProcessInitializeOnLoadAttributes (349ms)
+			ProcessInitializeOnLoadMethodAttributes (101ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Caller must complete domain reload
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.386 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.893 seconds
+Domain Reload Profiling: 4281ms
+	BeginReloadAssembly (424ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (64ms)
+	RebuildCommonClasses (105ms)
+	RebuildNativeTypeToScriptingClass (29ms)
+	initialDomainReloadingComplete (91ms)
+	LoadAllAssembliesAndSetupDomain (1738ms)
+		LoadAssemblies (1204ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (787ms)
+			TypeCache.Refresh (674ms)
+				TypeCache.ScanAssembly (571ms)
+			ScanForSourceGeneratedMonoScriptInfo (76ms)
+			ResolveRequiredComponents (31ms)
+	FinalizeReload (1894ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1360ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (12ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (150ms)
+			ProcessInitializeOnLoadAttributes (1005ms)
+			ProcessInitializeOnLoadMethodAttributes (175ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Failed to load shader (instanceID 488, GUID 2392e4a7b53c11541b9f41f8d1fe9c0f)
+Failed to load shader (instanceID 480, GUID bc4e0971daaa9a54abda318e5a3c306f)
+Failed to load shader (instanceID 484, GUID cc731aa40f0ada3428f63abf5090ade9)
+Failed to load shader (instanceID 500, GUID 86111b79a56c8d74793f044629fd137e)
+Failed to load shader (instanceID 504, GUID 1dcbc10d6b9a107489c24bc8e6ce0010)
+Failed to load shader (instanceID 482, GUID 0977980ec9820ee4f996f258ac0de782)
+Failed to load shader (instanceID 498, GUID 4d6aa7d52760e2c47bd42a72e73bdba8)
+Failed to load shader (instanceID 490, GUID 3fbb4ee8d6571d14b8ba4c5ba6ff8f5a)
+Failed to load shader (instanceID 502, GUID fda7944c3cb053d41a7a1c8133ed1058)
+Failed to load shader (instanceID 486, GUID e3ca756709cb68a46b6ed6613e4ada21)
+Failed to load shader (instanceID 496, GUID 6059b3fca41ac274a8e2c4054da4f6aa)
+Failed to load shader (instanceID 494, GUID 86efb39c5aa19544caed65ad6cce845c)
+Failed to load shader (instanceID 492, GUID 06dce7e0ab6989e4abe058ee3b48e069)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.16 seconds
+Refreshing native plugins compatible for Editor in 103.95 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5889 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (386.2 KB). Loaded Objects now: 6359.
+Memory consumption went from 230.2 MB to 229.8 MB.
+Total: 98.934700 ms (FindLiveObjects: 0.994800 ms CreateObjectMapping: 0.813900 ms MarkObjects: 96.848200 ms  DeleteObjects: 0.276300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 72b91833f83ae208fae7752999fa3104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/NewSceneTemplatePipeline.cs: b6f58a58324aadcdeb2ef714546683e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 18793.637353 seconds.
+  path: Assets/Materials/textures
+  artifactKey: Guid(f207bffcb5acb134c82824a515ef882e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Materials/textures using Guid(f207bffcb5acb134c82824a515ef882e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '645263647a09650ab0e63ed60e63a2f3') in 0.489127 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Materials/textures/Fabric 01
+  artifactKey: Guid(7983deb7ff13db54a8a2531a8d061382) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Materials/textures/Fabric 01 using Guid(7983deb7ff13db54a8a2531a8d061382) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '4a6f0b57518c0db748cc2226239226fc') in 0.029750 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000117 seconds.
+  path: Assets/Materials/textures/Polystyrene/Polystyrene_baseColor.png
+  artifactKey: Guid(fb28252c82c4b1e4b84349e370c6a74e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Materials/textures/Polystyrene/Polystyrene_baseColor.png using Guid(fb28252c82c4b1e4b84349e370c6a74e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '24ed56e32d13cdfc7f0ae89f91c7c663') in 0.284338 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Futuristic_soldier/Textures/HDRP_MaskMap
+  artifactKey: Guid(428c5d65fa1fe0843b4ba2ab8a65142b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Futuristic_soldier/Textures/HDRP_MaskMap using Guid(428c5d65fa1fe0843b4ba2ab8a65142b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'ea206b9328f8c923f5afe0c4e819b808') in 0.026018 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.002005 seconds.
+  path: Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset
+  artifactKey: Guid(f952c082cb03451daed3ee968ac6c63e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset using Guid(f952c082cb03451daed3ee968ac6c63e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'a5d2a6a8da368e713d27cd54f1eca4b1') in 0.048387 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.001279 seconds.
+  path: Assets/PolyLabs/PNTD/Free/Textures/cavernous_rock_Shale_Cavernous_Rock_Wet_and_Muddy/cavernous_rock_Shale_Cavernous_Rock_Wet_and_Muddy_roughness.png
+  artifactKey: Guid(37d71c307cd9643268cb8048bf3f06ad) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/PolyLabs/PNTD/Free/Textures/cavernous_rock_Shale_Cavernous_Rock_Wet_and_Muddy/cavernous_rock_Shale_Cavernous_Rock_Wet_and_Muddy_roughness.png using Guid(37d71c307cd9643268cb8048bf3f06ad) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'cff46dc77f3e884322b8b526bde252d1') in 0.076025 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Materials/textures/Flesh/Materials/Flesh 01_diffuse 1.mat
+  artifactKey: Guid(34ae9c2244228ee42ae7741e0a3a35d4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Materials/textures/Flesh/Materials/Flesh 01_diffuse 1.mat using Guid(34ae9c2244228ee42ae7741e0a3a35d4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'f38de6ffdfb3754f493ce8f770936ec4') in 0.151522 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.001076 seconds.
+  path: Assets/TextMesh Pro/Resources
+  artifactKey: Guid(243e06394e614e5d99fab26083b707fa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/TextMesh Pro/Resources using Guid(243e06394e614e5d99fab26083b707fa) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '818a2272373f5f358c7c131eec20415d') in 0.030294 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/PolyLabs/PNTD/Free/Textures/CobbledJungleWall_Flooring/CobbledJungleWall_Flooring_ambientocclusion.png
+  artifactKey: Guid(06275dffd3e1341729c432cc046bee38) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/PolyLabs/PNTD/Free/Textures/CobbledJungleWall_Flooring/CobbledJungleWall_Flooring_ambientocclusion.png using Guid(06275dffd3e1341729c432cc046bee38) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '67346537428273efbe3d54cce08419f3') in 0.067707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.001878 seconds.
+  path: Assets/PolyLabs/BonusAssets/PrototypeMats/Textures
+  artifactKey: Guid(2dfaf777df0fd4bff83470e89f038e6a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/PolyLabs/BonusAssets/PrototypeMats/Textures using Guid(2dfaf777df0fd4bff83470e89f038e6a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '8c9fc8ae056b13a4692565f0c31262e5') in 0.023398 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Alien/Cocoon/Texture/1K_Cocoon_TXTR.png
+  artifactKey: Guid(68cbb19dbc68f5646a93ecba76aaf10e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Alien/Cocoon/Texture/1K_Cocoon_TXTR.png using Guid(68cbb19dbc68f5646a93ecba76aaf10e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'fc879a0f2044643ac15e30b9889d1d65') in 0.048741 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.001030 seconds.
+  path: Assets/PolyLabs/PNTD/Free/Textures/cavernous_rock/cavernous_rock_metallic_unity_metallic.png
+  artifactKey: Guid(5f3dde0c00aa44b22a736e68e643248f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/PolyLabs/PNTD/Free/Textures/cavernous_rock/cavernous_rock_metallic_unity_metallic.png using Guid(5f3dde0c00aa44b22a736e68e643248f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '206144c59695ded9fd2b247efa447914') in 0.043569 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000737 seconds.
+  path: Assets/PolyLabs/PNTD/Free/Materials/OffsetDiamondBricks_Overgrown_Snowy.mat
+  artifactKey: Guid(5ba95a9b8211a4c7898008574dd76e5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/PolyLabs/PNTD/Free/Materials/OffsetDiamondBricks_Overgrown_Snowy.mat using Guid(5ba95a9b8211a4c7898008574dd76e5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '1be2482fbd982b481f713e5b16541727') in 0.115084 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+Editor requested this worker to shutdown with reason: balancing worker count downwards
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

@@ -1,45 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.InputSystem;
 using static Models;
 
 public class PlayerController : MonoBehaviour
 {
     private CharacterController characterController;
-    //private PlayerMovement playerMovement;
+    private PlayerInput playerInput;
     public Vector2 input_Move;
     public Vector2 input_Look;
 
     private Vector3 newCamRotate;
     private Vector3 newPlayerRotate;
 
+    [SerializeField] int moveLockout;
+    [SerializeField] int moveWait;
+
     [Header("Gravity")]
     public float gravityAmount;
     public float gravityMin;
     public float playerGravity;
 
-    [Header("Jump")]
     // jumping variables
-    private bool jumped;
+    [Header("Jump")]
     public Vector3 jumpForce;
-    private Vector3 jumpForceVel;
     [SerializeField] int jumpStam;
     [SerializeField] int minJumpStam;
-
+    private bool jumped;
+    private Vector3 jumpForceVel;
 
     [Header("Sprint")]
-    private bool sprinting;
     public int sprintMin;
-    private float forwardSpeed;
     public int maxStam;
     [SerializeField] int stamina;
     public int stamWaitVal;
     [SerializeField] int stamWait;
+    private bool sprinting;
+    private float forwardSpeed;
 
     [Header("References")]
     public Transform cameraHolder;
+    [SerializeField] Camera targetCamera;
 
     [Header("Settings")]
     public PlayerSettingsModel playerSettings;
@@ -50,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
 
-
     private void Awake()
     {
         // hides cursor
@@ -60,9 +61,18 @@ public class PlayerController : MonoBehaviour
         newCamRotate = cameraHolder.localRotation.eulerAngles;
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+
         sprinting = false;
         stamina = maxStam;
+    }
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        // camera stuff
+        gameObject.layer = LayerMask.NameToLayer(DecipherLayer(PlayerNum()));
+        FixLayers();
     }
 
     private void Update()
@@ -74,6 +84,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         RegainStam();
+        MoveLockout();
     }
     void LateUpdate()
     {
@@ -105,6 +116,11 @@ public class PlayerController : MonoBehaviour
     {
         jumped = context.action.triggered;
     }
+    public void OnGather(IInteractable pickup)
+    {
+        anim.SetTrigger("Gather");
+        moveLockout = moveWait;
+    }
 
     private void CalculateLook()
     {
@@ -117,6 +133,10 @@ public class PlayerController : MonoBehaviour
     }
     private void CalculateMove()
     {
+        if (moveLockout > 0)
+        {
+            return;
+        }
         var verticalSpeed = input_Move.y * Time.deltaTime;
         Sprint();
         if (verticalSpeed > 0) verticalSpeed *= forwardSpeed;
@@ -164,11 +184,11 @@ public class PlayerController : MonoBehaviour
     {
         return input_Move.y;
     }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
-            other.gameObject.SetActive(false);
-    }
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("PickUp"))
+    //        other.gameObject.SetActive(false);
+    //}
     private void CalculateJump()
     {
         jumpForce = Vector3.SmoothDamp(jumpForce, Vector3.zero,
@@ -207,15 +227,62 @@ public class PlayerController : MonoBehaviour
     }
     private void Sprint()
     {
+        forwardSpeed = playerSettings.WalkingForwardSpeed;
         if (sprinting)
         {
             stamina--;
-            forwardSpeed = playerSettings.RunningForwardSpeed;
+            forwardSpeed *= playerSettings.RunningMultiplier;
             if (stamina == 0) sprinting = false;
         }
-        else
+    }
+    private void MoveLockout()
+    {
+        if (moveLockout > 0) moveLockout--;
+    }
+    private void Show(string layerName)
+    {
+        targetCamera.cullingMask |= 1 << LayerMask.NameToLayer(layerName);
+    }
+
+    // Turn off the bit using an AND operation with the complement of the shifted int:
+    private void Hide(string layerName)
+    {
+        targetCamera.cullingMask &= ~(1 << LayerMask.NameToLayer(layerName));
+    }
+
+    // Toggle the bit using a XOR operation:
+    private void Toggle(string layerName)
+    {
+        targetCamera.cullingMask ^= 1 << LayerMask.NameToLayer(layerName);
+    }
+    public string DecipherLayer(int num)
+    {
+        switch (num)
         {
-            forwardSpeed = playerSettings.WalkingForwardSpeed;
+            case 0: return "Player 1";
+            case 1: return "Player 2";
+            case 2: return "Player 3";
+            case 3: return "Player 4";
+            case 4: return "Guide 1";
+            case 5: return "Guide 2";
+            case 6: return "Guide 3";
+            case 7: return "Guide 4";
+            default: return "Invalid";
+        }
+    }
+    public int PlayerNum()
+    {
+        return playerInput.playerIndex;
+    }
+    private void FixLayers()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (PlayerNum() != i) 
+            {
+                Hide(DecipherLayer(4 + i)); 
+            }
+            else Hide(DecipherLayer(PlayerNum()));
         }
     }
 }

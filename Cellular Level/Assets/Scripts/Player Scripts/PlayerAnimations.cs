@@ -28,8 +28,8 @@ public class PlayerAnimations: MonoBehaviour
     {
         anim.SetTrigger("Jump");
     }
-    public void GatherAnim()
-    {
-        anim.SetTrigger("Gather");
-    }
+    //public void GatherAnim()
+    //{
+    //    anim.SetTrigger("Gather");
+    //}
 }

@@ -11,11 +11,12 @@ public class Interactor : MonoBehaviour
 
     private readonly Collider[] _colliders = new Collider[3];
     [SerializeField] private int _numFound;
-    [SerializeField] GameObject player;
+    [SerializeField] PlayerController player;
+    [SerializeField] List<IInteractable> heldItems = new List<IInteractable>();
 
     private void Start()
     {
-
+        player.GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -30,7 +31,14 @@ public class Interactor : MonoBehaviour
             if ((interactable != null) && (context.action.triggered))
             {
                 interactable.Interact(this);
+                player.OnGather(interactable);
+                if (interactable.Tag() == "PickUp") heldItems.Add(interactable);
             }
         }
     }
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(_interactionPoint.transform.position, _interactionPointRad);
+    //}
 }

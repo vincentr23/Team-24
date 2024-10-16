@@ -16,4 +16,8 @@ public class Pickups : MonoBehaviour, IInteractable
     {
         transform.Rotate(0, 0.5f, 0, Space.World);
     }
+    public string Tag()
+    {
+        return tag;
+    }
 }

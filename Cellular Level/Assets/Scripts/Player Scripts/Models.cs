@@ -16,7 +16,7 @@ public class Models
         public float WalkingForwardSpeed;
         public float WalkingBackwardSpeed;
         public float WalkingStrafeSpeed;
-        public float RunningForwardSpeed;
+        public float RunningMultiplier;
 
         [Header("Jump")]
         public float JumpingHeight;

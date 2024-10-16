@@ -7,6 +7,7 @@ TagManager:
   - Main Camera
   - PickUp
   - Pickup Spawn
+  - Guide
   layers:
   - Default
   - TransparentFX
@@ -15,14 +16,14 @@ TagManager:
   - Water
   - UI
   - Interactables
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player 1
+  - Player 2
+  - Player 3
+  - Player 4
+  - Guide 1
+  - Guide 2
+  - Guide 3
+  - Guide 4
   - 
   - 
   - 
