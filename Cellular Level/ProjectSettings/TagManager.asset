@@ -8,6 +8,8 @@ TagManager:
   - PickUp
   - Pickup Spawn
   - Guide
+  - Enemy
+  - White Cell
   layers:
   - Default
   - TransparentFX

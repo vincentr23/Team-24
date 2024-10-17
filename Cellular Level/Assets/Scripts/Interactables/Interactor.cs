@@ -13,6 +13,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int _numFound;
     [SerializeField] PlayerController player;
     [SerializeField] List<IInteractable> heldItems = new List<IInteractable>();
+    public int whiteCellsHeld = 0;
 
     private void Start()
     {
@@ -32,7 +33,15 @@ public class Interactor : MonoBehaviour
             {
                 interactable.Interact(this);
                 player.OnGather(interactable);
-                if (interactable.Tag() == "PickUp") heldItems.Add(interactable);
+                switch(interactable.Tag())
+                {
+                    case "PickUp":
+                        heldItems.Add(interactable); break;
+                    case "White Cell":
+                        whiteCellsHeld++; break;
+                    default: 
+                        Debug.Log("Invalid tag"); break;
+                }
             }
         }
     }

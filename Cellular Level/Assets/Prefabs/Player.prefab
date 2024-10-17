@@ -379,6 +379,9 @@ PrefabInstance:
       addedObject: {fileID: 9157338520161380556}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 5007327521594533998}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8330479430316096068}
     - targetCorrespondingSourceObject: {fileID: -4543754042517259404, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
       insertIndex: -1
@@ -426,7 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ff26e1efa728940b0f54e52739083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 856598491197599086}
 --- !u!1 &5054936402999474786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cf152a0a06b3dc47a7c6d40918d95a9, type: 3}
@@ -471,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 5
-  guidePrefab: {fileID: 3310006491507960481, guid: 251da27f71667e6428e28a83e84f3b74, type: 3}
+  guidePrefab: {fileID: 161039538853416223, guid: 3dfb7f80bb504824495d0632223b3f88, type: 3}
 --- !u!114 &856598491197599086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +534,7 @@ MonoBehaviour:
     m_Bits: 64
   _numFound: 0
   player: {fileID: 856598491197599086}
+  whiteCellsHeld: 0
 --- !u!54 &5751624008388446667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -572,6 +575,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5054936402999474786}
+--- !u!114 &5007327521594533998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054936402999474786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956e064117c75a043a76a70ace72bc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhiteCellPrefab: {fileID: 8827311311515156821, guid: ce56ad9ed97defe4fb9e48ba79389d30, type: 3}
 --- !u!114 &8330479430316096068
 MonoBehaviour:
   m_ObjectHideFlags: 0

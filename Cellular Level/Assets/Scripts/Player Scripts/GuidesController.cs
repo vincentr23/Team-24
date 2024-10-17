@@ -26,16 +26,26 @@ public class GuidesController : MonoBehaviour
 
             pickupSpawns = GameObject.FindGameObjectsWithTag("PickUp");
             GameObject addedObject;
+            var closest = Vector3.Distance(player.transform.position,
+                pickupSpawns[0].transform.position);
+            var closestObj = pickupSpawns[0];
             foreach (GameObject pickupSpawn in pickupSpawns)
             {
-                var spawnPos = transform.position;
-                spawnPos.y = 1f;
-                addedObject = Instantiate(guidePrefab,
-                    spawnPos, transform.rotation);
-                addedObject.GetComponent<Guide>().SetCoords(pickupSpawn.transform.position);
-                FixLayers(addedObject);
-                guides.Add(addedObject);
+                var dist = Vector3.Distance(player.transform.position,
+                    pickupSpawn.transform.position);
+                if (dist < closest)
+                {
+                    closestObj = pickupSpawn;
+                    closest = dist;
+                }
             }
+            var spawnPos = transform.position;
+            spawnPos.y = 1f;
+            addedObject = Instantiate(guidePrefab,
+                spawnPos, transform.rotation);
+            addedObject.GetComponent<Guide>().SetCoords(closestObj.transform.position);
+            FixLayers(addedObject);
+            guides.Add(addedObject);
             timer -= frequency;
         }
         timer += Time.deltaTime;
