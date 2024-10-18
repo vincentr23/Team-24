@@ -20,6 +20,7 @@ public class Interactor : MonoBehaviour
     private void Start()
     {
         player.GetComponent<PlayerController>();
+        oxygenSystem = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void Update()
