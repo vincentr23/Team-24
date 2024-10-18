@@ -60,11 +60,17 @@
     <Analyzer Include="D:\Unity\2022.3.43f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\SpaceshipController.cs" />
+    <Compile Include="Assets\Scripts\SpaceshipSpawner.cs" />
     <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCellPickup.cs" />
     <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
+    <Compile Include="Assets\Scripts\SceneSwitch.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\FixLayer.cs" />
+    <Compile Include="Assets\Scripts\UpdateHealthAndLevel.cs" />
     <Compile Include="Assets\Input\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\HealthManager.cs" />
     <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCell.cs" />
     <Compile Include="Assets\PolyLabs\PNTD\Free\PNTDSampleConsts.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MoveCamera.cs" />
@@ -72,6 +78,7 @@
     <Compile Include="Assets\Scripts\Player Scripts\Models.cs" />
     <Compile Include="Assets\FirstPersonController.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RPMaterialLoader.cs" />
+    <Compile Include="Assets\Scripts\ItemCollectCounter.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RootmotionReset.cs" />
     <Compile Include="Assets\Scripts\Game Manager.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerAnimations.cs" />

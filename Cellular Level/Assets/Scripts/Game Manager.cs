@@ -29,6 +29,12 @@ public class GameManager : MonoBehaviour
             Instantiate(pickupPrefab, pickupSpawns[pickupSpawn].transform.position,
                 pickupSpawns[pickupSpawn].transform.rotation);
         }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerController>().ToggleSpawn(); ;
+        }
     }
 
     // Update is called once per frame

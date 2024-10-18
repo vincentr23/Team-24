@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        //Setting spawn
+        GameObject[] playerSpawns = GameObject.FindGameObjectsWithTag("Player Spawn");
+        m_initialPosition = playerSpawns[PlayerNum()].transform;
 
         sprinting = false;
         stamina = maxStam;
@@ -284,5 +287,9 @@ public class PlayerController : MonoBehaviour
             }
             else Hide(DecipherLayer(PlayerNum()));
         }
+    }
+    public void ToggleSpawn()
+    {
+        m_isInitialPositionSet = false;
     }
 }

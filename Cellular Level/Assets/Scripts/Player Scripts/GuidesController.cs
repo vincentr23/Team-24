@@ -20,11 +20,12 @@ public class GuidesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pickupSpawns = GameObject.FindGameObjectsWithTag("PickUp");
+        if (pickupSpawns.Length == 0) return;
         if (timer > frequency)
         {
             if (guides != null) DeleteAllGuides();
 
-            pickupSpawns = GameObject.FindGameObjectsWithTag("PickUp");
             GameObject addedObject;
             var closest = Vector3.Distance(player.transform.position,
                 pickupSpawns[0].transform.position);
