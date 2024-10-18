@@ -13,17 +13,22 @@ public class SummonWhiteCells : MonoBehaviour
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        player = GetComponent<PlayerController>();
     }
 
-    void Summon(InputAction.CallbackContext context)
+    public void Summon(InputAction.CallbackContext context)
     {
         if ((player.GetComponent<Interactor>().whiteCellsHeld > 0) &&
             (context.action.triggered))
         {
             player = GetComponent<PlayerController>();
             var closestEnemy = FindClosestEnemy();
+            var spawnPos = new Vector3(
+                player.transform.localPosition.x,
+                player.transform.localPosition.y + 1f, 
+                player.transform.localPosition.z + 2f);
             GameObject addedObj = Instantiate(WhiteCellPrefab,
-                player.transform.position, transform.rotation);
+                spawnPos, transform.rotation);
             addedObj.GetComponent<WhiteCell>().SetTarget(closestEnemy);
             player.GetComponent<Interactor>().whiteCellsHeld--;
         }

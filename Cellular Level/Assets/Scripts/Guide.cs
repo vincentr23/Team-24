@@ -11,7 +11,7 @@ public class Guide : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 2, transform.position.z);
     }
 
     // Update is called once per frame

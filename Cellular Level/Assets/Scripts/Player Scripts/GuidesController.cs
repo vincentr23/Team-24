@@ -40,7 +40,6 @@ public class GuidesController : MonoBehaviour
                 }
             }
             var spawnPos = transform.position;
-            spawnPos.y = 1f;
             addedObject = Instantiate(guidePrefab,
                 spawnPos, transform.rotation);
             addedObject.GetComponent<Guide>().SetCoords(closestObj.transform.position);
