@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Models;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int stamina;
     public int stamWaitVal;
     [SerializeField] int stamWait;
+    public Image Stambar;
     private bool sprinting;
     private float forwardSpeed;
 
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
         CalculateMove();
         CalculateLook();
         CalculateJump();
+        CalculateStam();
     }
     private void FixedUpdate()
     {
@@ -291,5 +294,9 @@ public class PlayerController : MonoBehaviour
     public void ToggleSpawn()
     {
         m_isInitialPositionSet = false;
+    }
+    private void CalculateStam()
+    {
+        Stambar.fillAmount = (float)stamina / (float)maxStam;
     }
 }

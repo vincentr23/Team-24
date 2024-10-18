@@ -12,6 +12,7 @@ TagManager:
   - White Cell
   - FxTemporaire
   - Player Spawn
+  - Dropoff
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     public GameObject[] pickupSpawns;
     [SerializeField] uint numObjects;
     private List<int> randomList = new List<int>();
+    
+    [SerializeField] float oxygen = 100f;
+    [SerializeField] float totalOxygen = 100f;
+    [SerializeField] float oxygenTick = 0.5f;
+    [SerializeField] float oxyMult = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,5 +46,24 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    private void FixedUpdate()
+    {
+        oxygen -= oxygenTick;
+    }
+
+    public float GetOxygen()
+    {
+        return oxygen;
+    }
+    public float GetTotalOxy()
+    {
+        return totalOxygen;
+    }
+    public void CollectOxygen(float increase)
+    {
+        oxygen += (increase * oxyMult);
+        if (oxygen > totalOxygen)
+            oxygen = totalOxygen;
     }
 }

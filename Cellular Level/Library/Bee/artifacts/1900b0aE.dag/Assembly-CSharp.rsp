@@ -390,7 +390,9 @@
 -analyzer:"D:/Unity/2022.3.43f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/Unity/2022.3.43f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/CameraFollow.cs"
+"Assets/Dropoff.cs"
 "Assets/FirstPersonController.cs"
+"Assets/GameSystems.cs"
 "Assets/HeartbeatPulse.cs"
 "Assets/Input/PlayerMovement.cs"
 "Assets/Model/3D Character Dummy/_ExampleScene/Scripts/DummyRPMaterialLoader.cs"
@@ -402,6 +404,8 @@
 "Assets/Scripts/Game Manager.cs"
 "Assets/Scripts/Guide.cs"
 "Assets/Scripts/HealthManager.cs"
+"Assets/Scripts/HUDManager.cs"
+"Assets/Scripts/InGameSystem.cs"
 "Assets/Scripts/Interactables/IInteractable.cs"
 "Assets/Scripts/Interactables/Interactor.cs"
 "Assets/Scripts/Interactables/Pickups.cs"
@@ -422,6 +426,7 @@
 "Assets/Scripts/SpaceshipController.cs"
 "Assets/Scripts/SpaceshipSpawner.cs"
 "Assets/Scripts/UpdateHealthAndLevel.cs"
+"Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 /deterministic
 /optimize+

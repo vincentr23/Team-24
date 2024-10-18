@@ -14,6 +14,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] PlayerController player;
     [SerializeField] List<IInteractable> heldItems = new List<IInteractable>();
     public int whiteCellsHeld = 0;
+    int numHeldItems = 0;
+    public GameManager oxygenSystem;
 
     private void Start()
     {
@@ -36,13 +38,30 @@ public class Interactor : MonoBehaviour
                 switch(interactable.Tag())
                 {
                     case "PickUp":
-                        heldItems.Add(interactable); break;
+                        heldItems.Add(interactable);
+                        oxygenSystem.CollectOxygen(1);
+                        numHeldItems++;
+                        break;
                     case "White Cell":
                         whiteCellsHeld++; break;
+                    //case "Dropoff":
+                    //    oxygenSystem.CollectOxygen(heldItems.Capacity);
+                        
+                    //  numHeldItems = 0;
+                    //    break;
                     default: 
                         Debug.Log("Invalid tag"); break;
                 }
             }
+        }
+    }
+
+    void DropOxygen()
+    {
+        foreach (IInteractable item in heldItems)
+        {
+            //item.GetComponent<GameObject>().SetActive(true);
+
         }
     }
     //public void OnDrawGizmos()

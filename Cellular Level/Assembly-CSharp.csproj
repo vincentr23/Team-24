@@ -63,10 +63,14 @@
     <Compile Include="Assets\Scripts\SpaceshipController.cs" />
     <Compile Include="Assets\Scripts\SpaceshipSpawner.cs" />
     <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCellPickup.cs" />
+    <Compile Include="Assets\Scripts\InGameSystem.cs" />
+    <Compile Include="Assets\GameSystems.cs" />
     <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\SceneSwitch.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\FixLayer.cs" />
     <Compile Include="Assets\Scripts\UpdateHealthAndLevel.cs" />
+    <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Input\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="Assets\HeartbeatPulse.cs" />
     <Compile Include="Assets\Scripts\Interactables\White Cells\SummonWhiteCells.cs" />
     <Compile Include="Assets\Scripts\Interactables\IInteractable.cs" />
+    <Compile Include="Assets\Dropoff.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\Spawn.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyPatrol.cs" />
