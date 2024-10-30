@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Models;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int stamina;
     public int stamWaitVal;
     [SerializeField] int stamWait;
+    public Image Stambar;
+    [SerializeField] float SlowMult;
+    [SerializeField] float SlowedBase;
+    private float SlowTime;
     private bool sprinting;
     private float forwardSpeed;
 
@@ -62,6 +67,9 @@ public class PlayerController : MonoBehaviour
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        //Setting spawn
+        GameObject[] playerSpawns = GameObject.FindGameObjectsWithTag("Player Spawn");
+        m_initialPosition = playerSpawns[PlayerNum()].transform;
 
         sprinting = false;
         stamina = maxStam;
@@ -80,6 +88,7 @@ public class PlayerController : MonoBehaviour
         CalculateMove();
         CalculateLook();
         CalculateJump();
+        CalculateStam();
     }
     private void FixedUpdate()
     {
@@ -148,6 +157,12 @@ public class PlayerController : MonoBehaviour
 
         var horizontalSpeed = playerSettings.WalkingStrafeSpeed * input_Move.x * Time.deltaTime;
 
+        if (SlowTime > 0)
+        {
+            verticalSpeed *= SlowMult;
+            horizontalSpeed *= SlowMult;
+            SlowTime--;
+        }
         var newMoveSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
         newMoveSpeed = transform.TransformDirection(newMoveSpeed);
 
@@ -235,6 +250,11 @@ public class PlayerController : MonoBehaviour
             if (stamina == 0) sprinting = false;
         }
     }
+
+    public void Slow()
+    {
+        SlowTime = SlowedBase;
+    }
     private void MoveLockout()
     {
         if (moveLockout > 0) moveLockout--;
@@ -284,5 +304,13 @@ public class PlayerController : MonoBehaviour
             }
             else Hide(DecipherLayer(PlayerNum()));
         }
+    }
+    public void ToggleSpawn()
+    {
+        m_isInitialPositionSet = false;
+    }
+    private void CalculateStam()
+    {
+        Stambar.fillAmount = (float)stamina / (float)maxStam;
     }
 }

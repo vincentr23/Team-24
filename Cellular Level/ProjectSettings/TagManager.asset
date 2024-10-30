@@ -10,6 +10,10 @@ TagManager:
   - Guide
   - Enemy
   - White Cell
+  - FxTemporaire
+  - Player Spawn
+  - Dropoff
+  - Cancer Spawn
   layers:
   - Default
   - TransparentFX
@@ -26,7 +30,7 @@ TagManager:
   - Guide 2
   - Guide 3
   - Guide 4
-  - 
+  - Enemy
   - 
   - 
   - 
