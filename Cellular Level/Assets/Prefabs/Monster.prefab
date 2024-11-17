@@ -479,9 +479,14 @@ MonoBehaviour:
   patrolSpeed: 3
   chaseSpeed: 6
   locataionEffectorObject: {fileID: 8902870390152831000}
+  locataionEffectorObjectOrig: {fileID: 0}
   deviationDistance: 5
   deviationTime: 3
   lookAroundDuration: 2
+  loseSightDuration: 10
+  headTurnSpeed: 2
+  attackRange: 2
+  attackCooldown: 1.5
 --- !u!195 &7582872620741678793
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -550,7 +555,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

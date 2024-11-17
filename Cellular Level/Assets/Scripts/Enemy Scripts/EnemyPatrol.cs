@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -15,23 +16,24 @@ public class EnemyPatrol : MonoBehaviour
     public GameObject locataionEffectorObject;
     public GameObject locataionEffectorObjectOrig;
     private NavMeshAgent agent;
-    private Transform player;
+    private GameObject player;
     private int currentNodeIndex;
     private Animator animator;
     public float deviationDistance = 5f;    // Distance the monster can deviate from the path
     public float deviationTime = 3f;        // Time the monster will wander off before returning
     public float lookAroundDuration = 2f;    // Time to look around after reaching a node
-    private bool isLookingAround = false;
-    private bool isChasing = false;
-
     public float loseSightDuration = 10f; // Time in seconds before giving up the chase
     private float loseSightTime; // Tracks time since player was last in sight
     private bool isChasingPlayer = false;
     public float headTurnSpeed = 2f;
-    public float attackRange = 2f;  // Distance within which the monster will attack
-    public float attackCooldown = 1.5f; // Time between attacks
-    private bool isAttacking = false;
-    private float lastAttackTime;
+    public float attackRange = 3f; // Range within which the monster can attack
+    public float attackCooldown = 2f; // Cooldown between attacks
+    private bool canAttack = true;
+    public Collider handCollider;
+    public Collider armCollider;
+
+
+    private GameObject[] playersInGame;
 
     void Awake()
     {
@@ -41,6 +43,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
+        armCollider = GetComponent<Collider>();
+        handCollider = GetComponent<Collider>();
+
         // Get the NavMeshAgent component
         agent = GetComponent<NavMeshAgent>();
 
@@ -48,85 +53,96 @@ public class EnemyPatrol : MonoBehaviour
         currentNodeIndex = UnityEngine.Random.Range(0, patrolNodes.Length);
         GoToNextNode();
 
-        // Find the player object
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
         // Start patrolling at walking speed
         agent.speed = patrolSpeed;
+
     }
 
     void Update()
     {
-        // Continuously check for the nearest player if not yet assigned
-        FindNearestPlayer();
+        GetPlayersInGame();
 
-        // If no players were found, return early
-        if (player == null) return;
-
-        // Check if the player is visible
-        if (CanSeePlayer() && Vector3.Distance(transform.position, player.position) > attackRange)
+        if (!isChasingPlayer)
         {
-            loseSightTime = Time.time; // Reset timer when the player is in sight
-            ChasePlayer();
-            //SmoothHeadTurn();
-        }
-        else if (isChasingPlayer && Time.time - loseSightTime < loseSightDuration)
-        {
-            // Continue chasing if within lose sight duration
-            ChasePlayer();
-            //SmoothHeadTurn();
-        }
-        else if (Vector3.Distance(transform.position, player.position) <= attackRange)
-        {
-            AttackPlayer();
-        }
-        else
-        {
-            // Stop chasing if the player is out of sight for more than 10 seconds
-            isChasingPlayer = false;
             Patrol();
+            if (CanSeePlayer())
+            {
+                ChasePlayer();
+            }
+        }
+        
+        if (isChasingPlayer)
+        {
+            if (player != null && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            {
+                if (canAttack)
+                {
+                    AttackPlayer();
+                }
+            }
+
+            if (!CanSeePlayer() && loseSightTime <= loseSightDuration)
+            {
+                ChasePlayer();
+                loseSightTime += Time.deltaTime; 
+            }
+
+            if (loseSightTime > loseSightDuration)
+            {
+                isChasingPlayer = false;
+                loseSightTime = 0;
+            }
         }
 
-        // Update animations based on agent's movement speed
-        HandleAnimationsBasedOnSpeed();
+        UpdateAnimationBasedOnSpeed();
+
     }
 
-    // Updates the animations based on the agent's movement speed
-    private void HandleAnimationsBasedOnSpeed()
+
+    private void UpdateAnimationBasedOnSpeed()
     {
-        float agentSpeed = agent.velocity.magnitude;
-        Debug.Log($"Agent Speed: {agentSpeed}"); // Debug statement to check speed
+        // Get the monster's speed from the NavMeshAgent
+        float speed = agent.velocity.magnitude;
 
         // If the monster is moving
-        if (agentSpeed > 0.1f)
+        if (speed > 0.1f)
         {
-            if (agentSpeed > patrolSpeed * 1.5f) // Running if speed is higher than patrolSpeed threshold
+            // Patrol speed (when not chasing) or chasing logic
+            if (speed <= 8f) // Patrol Speed (adjust this if necessary)
             {
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isIdle", false); // Set idle to true when stopped
-            }
-            else // Walking if speed is lower
-            {
-                animator.SetBool("isRunning", false);
+                animator.SetBool("isIdle", false);
                 animator.SetBool("isWalking", true);
-                animator.SetBool("isIdle", false); // Set idle to true when stopped
+                animator.SetBool("isRunning", false);
+            }
+            else // Running or Chasing (speed > 8f, adjust as needed)
+            {
+                animator.SetBool("isIdle", false);
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isRunning", true);
             }
         }
-        else // If the monster is idle
+        else // If the monster is not moving
         {
-            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", true);
             animator.SetBool("isWalking", false);
-            animator.SetBool("isIdle", true); // Set idle to true when stopped
-
+            animator.SetBool("isRunning", false);
         }
     }
-
 
 
     // Moves the agent to the next patrol node
     private void GoToNextNode()
     {
+
+        int randomNodeIndex;
+
+        do
+        {
+            randomNodeIndex = Random.Range(0, patrolNodes.Length);
+        } while (randomNodeIndex == currentNodeIndex);
+
+        currentNodeIndex = randomNodeIndex;
+
         if (patrolNodes.Length == 0) return; // No nodes to patrol
 
         // Set the destination to the current node
@@ -142,8 +158,6 @@ public class EnemyPatrol : MonoBehaviour
     // Patrols the area by moving from node to node
     private void Patrol()
     {
-        bool LookAround = UnityEngine.Random.Range(0, 2) == 1;
-
         if (agent.remainingDistance < .5f) {
             // Check if the agent has reached the node
             GoToNextNode();
@@ -156,102 +170,122 @@ public class EnemyPatrol : MonoBehaviour
     {
         // Set speed to running speed and chase the player
         agent.speed = chaseSpeed;
-        agent.SetDestination(player.position);
+        agent.SetDestination(player.transform.position);
         isChasingPlayer = true;
     }
 
     // Checks if the player is within sight and field of view
     private bool CanSeePlayer()
     {
-        // Check distance to the player
-        if (Vector3.Distance(transform.position, player.position) < chaseDistance)
+        if (!isChasingPlayer)
         {
-            // Check if the player is within the field of view
-            Vector3 directionToPlayer = (player.position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, directionToPlayer);
-
-            // Player is within the field of view
-            if (angle < fieldOfViewAngle / 2)
-            {
-                // Check if there is a clear line of sight to the player
-                if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, chaseDistance))
+            if (playersInGame != null) {
+                // Check distance to the player
+                foreach (GameObject p in playersInGame)
                 {
-                    if (hit.transform.CompareTag("Player")) // Ensure the hit object is the player
+                    if (Vector3.Distance(transform.position, p.transform.position) < chaseDistance)
                     {
-                        return true; // Player is in sight
+                        // Check if the player is within the field of view
+                        Vector3 directionToPlayer = (p.transform.position - transform.position).normalized;
+                        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+                        // Player is within the field of view
+                        if (angle < fieldOfViewAngle / 2)
+                        {
+                            // Check if there is a clear line of sight to the player
+                            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, chaseDistance))
+                            {
+                                if (hit.transform.CompareTag("Player")) // Ensure the hit object is the player
+                                {
+                                    player = p;
+                                    return true; // Player is in sight
+                                }
+                            }
+                        }
                     }
+                    locataionEffectorObject.transform.position = locataionEffectorObjectOrig.transform.position;
+                    return false; // Player not in sight
                 }
             }
         }
-        locataionEffectorObject.transform.position = locataionEffectorObjectOrig.transform.position;
-        return false; // Player not in sight
-    }
-
-    void FindNearestPlayer()
-    {
-        // Find all players with the "Player" tag
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        // If no players found, set player to null and exit
-        if (players.Length == 0)
+        else
         {
-            player = null;
-            return;
-        }
-
-        // Initialize variables to track the closest player
-        float closestDistance = Mathf.Infinity;
-        Transform closestPlayer = null;
-
-        // Loop through all players to find the nearest one
-        foreach (GameObject potentialPlayer in players)
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, potentialPlayer.transform.position);
-
-            // If this player is closer than the current closest, update the closest player
-            if (distanceToPlayer < closestDistance)
+            if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance)
             {
-                closestDistance = distanceToPlayer;
-                closestPlayer = potentialPlayer.transform;
-            }
-        }
+                // Check if the player is within the field of view
+                Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+                float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
-        // Set the closest player as the target
-        player = closestPlayer;
+                // Player is within the field of view
+                if (angle < fieldOfViewAngle / 2)
+                {
+                    // Check if there is a clear line of sight to the player
+                    if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, chaseDistance))
+                    {
+                        if (hit.transform.CompareTag("Player")) // Ensure the hit object is the player
+                        {
+                            return true; // Player is in sight
+                        }
+                    }
+                }
+            }
+            locataionEffectorObject.transform.position = locataionEffectorObjectOrig.transform.position;
+            return false; // Player not in sight
+        }
+        return false;
+
     }
 
-    private void SmoothHeadTurn()
+     void GetPlayersInGame()
     {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-
-        // Smoothly interpolate towards the target rotation
-        locataionEffectorObject.transform.rotation = Quaternion.Slerp(
-            locataionEffectorObject.transform.rotation,
-            targetRotation,
-            Time.deltaTime * headTurnSpeed
-        );
+        // Get all active players in the scene (ensure your player objects have a "Player" script attached)
+        playersInGame = GameObject.FindGameObjectsWithTag("Player");
     }
 
     private void AttackPlayer()
     {
-        // Check if cooldown period has passed
-        if (Time.time - lastAttackTime >= attackCooldown)
+        // Play attack animation
+        if (animator != null)
         {
-            agent.isStopped = true; // Stop movement
-
-            // Trigger attack animation
             animator.SetTrigger("isAttacking");
-
-            // Update last attack time
-            lastAttackTime = Time.time;
         }
-        else
+
+        armCollider.enabled = true;
+        handCollider.enabled = true;
+
+        // Start cooldown
+        StartCoroutine(AttackCooldown());
+    }
+
+    // Coroutine to handle cooldown
+    private System.Collections.IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+
+    {
+        // Check if the object hit has the Player tag
+            if (other.CompareTag("Player"))
+            {
+                Debug.Log("Player hit by monster!");
+            }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Monster collided with the player!");
+        // Check if the player touched the monster
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Resume chasing if attack cooldown not met
-            agent.isStopped = false;
+            player = collision.gameObject;
             ChasePlayer();
         }
     }
+
 
 }

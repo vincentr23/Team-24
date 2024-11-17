@@ -14,6 +14,7 @@ TagManager:
   - Player Spawn
   - Dropoff
   - Cancer Spawn
+  - Cancer
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,8 @@ TagManager:
   - Guide 3
   - Guide 4
   - Enemy
-  - 
-  - 
+  - Walls
+  - Ground
   - 
   - 
   - 
