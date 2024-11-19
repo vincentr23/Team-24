@@ -7,16 +7,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXRRuntime", "CFXRRuntime.csproj", "{289810C6-B785-E5EA-ECF8-F42C96C17F1B}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXR.WelcomeScreen", "CFXR.WelcomeScreen.csproj", "{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXRDemo", "CFXRDemo.csproj", "{791FFC5E-0044-471A-855F-DB5D46BB67D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro.Demo.Editor", "ToonyColorsPro.Demo.Editor.csproj", "{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}"
 EndProject
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXRDemo", "CFXRDemo.csproj", "{791FFC5E-0044-471A-855F-DB5D46BB67D1}"
+EndProject
+>>>>>>> origin/yuanwei-active2
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{30186A6B-CDC1-CA6D-131F-D0E3CF99791D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinoBloom.Runtime", "KinoBloom.Runtime.csproj", "{DF0B4004-4CBE-4EDC-63E0-B3DB6418BE3F}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro.Demo.Editor", "ToonyColorsPro.Demo.Editor.csproj", "{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFXR.WelcomeScreen", "CFXR.WelcomeScreen.csproj", "{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}"
+EndProject
+>>>>>>> origin/yuanwei-active2
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,18 +47,24 @@ Global
 		{289810C6-B785-E5EA-ECF8-F42C96C17F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{289810C6-B785-E5EA-ECF8-F42C96C17F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{289810C6-B785-E5EA-ECF8-F42C96C17F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> origin/yuanwei-active2
 		{791FFC5E-0044-471A-855F-DB5D46BB67D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{791FFC5E-0044-471A-855F-DB5D46BB67D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{791FFC5E-0044-471A-855F-DB5D46BB67D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{791FFC5E-0044-471A-855F-DB5D46BB67D1}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> origin/yuanwei-active2
 		{30186A6B-CDC1-CA6D-131F-D0E3CF99791D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30186A6B-CDC1-CA6D-131F-D0E3CF99791D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30186A6B-CDC1-CA6D-131F-D0E3CF99791D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,6 +73,17 @@ Global
 		{DF0B4004-4CBE-4EDC-63E0-B3DB6418BE3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF0B4004-4CBE-4EDC-63E0-B3DB6418BE3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF0B4004-4CBE-4EDC-63E0-B3DB6418BE3F}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> origin/yuanwei-active2
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

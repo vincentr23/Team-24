@@ -1,8 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b5eeb4a59a4b4cb49aab01fb1f54fcfa
 folderAsset: yes
 timeCreated: 1537222332
 licenseType: Store
+=======
+guid: 184f58cd8a286d24499d2e0252aa88b6
+folderAsset: yes
+>>>>>>> origin/yuanwei-active2
 DefaultImporter:
   externalObjects: {}
   userData: 

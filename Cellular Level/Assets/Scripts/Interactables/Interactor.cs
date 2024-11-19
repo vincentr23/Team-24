@@ -16,6 +16,10 @@ public class Interactor : MonoBehaviour
     public int whiteCellsHeld = 0;
     int numHeldItems = 0;
     public GameManager oxygenSystem;
+<<<<<<< HEAD
+=======
+    private NPCInteractable currentNPC;
+>>>>>>> origin/yuanwei-active2
 
     private void Start()
     {
@@ -26,6 +30,30 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRad, _colliders, (int)_interactableMask);
+<<<<<<< HEAD
+=======
+
+        if (Input.GetKeyDown(KeyCode.E) || (Input.GetMouseButtonDown(0))) {
+            float interactRange = 5f;
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider collider in colliderArray) {
+                if (collider.TryGetComponent(out NPCInteractable npcInteractable)) {
+                    npcInteractable.Interact();
+                    currentNPC = npcInteractable;
+                    break;
+                }
+            }
+        }
+
+        if (currentNPC != null) {
+            float interactRange = 10f;
+            float distance = Vector3.Distance(transform.position, currentNPC.transform.position);
+            if (distance > interactRange) {
+                currentNPC.EndInteraction();
+                currentNPC = null;
+            }
+        }
+>>>>>>> origin/yuanwei-active2
     }
     public void Interact(InputAction.CallbackContext context)
     {

@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 sceneSetups: []
+=======
+sceneSetups:
+- path: Assets/Scenes/CaveLevel.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
+>>>>>>> origin/yuanwei-active2

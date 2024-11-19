@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 598c23ea9d0b95f46a392d2138de1f73
+=======
+guid: 401b540448b0ce345bcf974bc5bc363d
+>>>>>>> origin/yuanwei-active2
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
