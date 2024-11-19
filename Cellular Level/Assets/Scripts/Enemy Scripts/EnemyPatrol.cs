@@ -121,7 +121,7 @@ public class EnemyPatrol : MonoBehaviour
         if (speed > 0.1f)
         {
             // Patrol speed (when not chasing) or chasing logic
-            if (speed <= 8f) // Patrol Speed (adjust this if necessary)
+            if (speed < 8f) // Patrol Speed (adjust this if necessary)
             {
                 animator.SetBool("isIdle", false);
                 animator.SetBool("isWalking", true);
