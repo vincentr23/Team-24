@@ -60,24 +60,82 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.43f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Cancer.cs" />
     <Compile Include="Assets\Scripts\HealthManager.cs" />
+    <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCell.cs" />
+    <Compile Include="Assets\PolyLabs\PNTD\Free\PNTDSampleConsts.cs" />
     <Compile Include="Assets\Scripts\SpaceshipController.cs" />
     <Compile Include="Assets\Scripts\Models.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\SpaceshipSpawner.cs" />
+    <Compile Include="Assets\Scripts\MenuJoin.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\Models.cs" />
     <Compile Include="Assets\FirstPersonController.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RPMaterialLoader.cs" />
+    <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCellPickup.cs" />
     <Compile Include="Assets\Scripts\ItemCollectCounter.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RootmotionReset.cs" />
+    <Compile Include="Assets\Scripts\Game Manager.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlayerAnimations.cs" />
+    <Compile Include="Assets\Scripts\InGameSystem.cs" />
+    <Compile Include="Assets\GameSystems.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\GuidesController.cs" />
+    <Compile Include="Assets\Scripts\Guide.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\HeartbeatPulse.cs" />
     <Compile Include="Assets\Scripts\SceneSwitch.cs" />
+    <Compile Include="Assets\DevilAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\FixLayer.cs" />
+    <Compile Include="Assets\Scripts\Interactables\White Cells\SummonWhiteCells.cs" />
+    <Compile Include="Assets\Scripts\Interactables\IInteractable.cs" />
+    <Compile Include="Assets\Dropoff.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\Spawn.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyPatrol.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimations.cs" />
     <Compile Include="Assets\Scripts\UpdateHealthAndLevel.cs" />
+    <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Input\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ItemSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Model\3D Character Dummy\_ExampleScene\Scripts\DummyRPMaterialLoader.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Interactor.cs" />
+    <Compile Include="Assets\PolyLabs\BonusAssets\Rotator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Alien\ALien Info.txt" />
+    <None Include="Assets\SciFi_Space_Soldier\Resources\Shaders\SpaceStation_PBR_Basic.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_PASSES.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Industrial Props\ReadMe.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_URP.cginc" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Viruses_FREE\Documentation (Viruses_LITE).txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1000,12 +1058,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
@@ -1034,6 +1092,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
+      <Project>{DF72AA86-5901-200F-5C92-3BAC3C2C1D60}</Project>
+      <Name>CFXR.WelcomeScreen</Name>
+    </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{DF0B4004-4CBE-4EDC-63E0-B3DB6418BE3F}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{BA7B6128-D3A9-3AFF-B89F-FD298F20A878}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{289810C6-B785-E5EA-ECF8-F42C96C17F1B}</Project>
+      <Name>CFXRRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{B708F97D-DEE9-8A37-157D-907E9B90B739}</Project>
+      <Name>CFXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{791FFC5E-0044-471A-855F-DB5D46BB67D1}</Project>
+      <Name>CFXRDemo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
