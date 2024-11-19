@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Main Camera
-<<<<<<< HEAD
-  - Oxygen
-=======
   - PickUp
   - Pickup Spawn
   - Guide
@@ -18,7 +15,8 @@ TagManager:
   - Dropoff
   - Cancer Spawn
   - Cancer
->>>>>>> origin/yuanwei-active2
+  - Win Wall
+  - HUD
   layers:
   - Default
   - TransparentFX
@@ -26,20 +24,6 @@ TagManager:
   - Player
   - Water
   - UI
-<<<<<<< HEAD
-  - whatIsGround
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-=======
   - Interactables
   - Player 1
   - Player 2
@@ -52,7 +36,6 @@ TagManager:
   - Enemy
   - Walls
   - Ground
->>>>>>> origin/yuanwei-active2
   - 
   - 
   - 

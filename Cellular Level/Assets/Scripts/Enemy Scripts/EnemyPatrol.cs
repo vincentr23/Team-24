@@ -32,6 +32,10 @@ public class EnemyPatrol : MonoBehaviour
     public Collider handCollider;
     public Collider armCollider;
 
+    [Header("Stun stuff")]
+    [SerializeField] int stunned = 0;
+    [SerializeField] int stunTimer = 200;
+
 
     private GameObject[] playersInGame;
 
@@ -60,6 +64,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        if (stunned > 0) agent.speed = 0;
+        else agent.speed = patrolSpeed;
+
         GetPlayersInGame();
 
         if (!isChasingPlayer)
@@ -96,6 +103,12 @@ public class EnemyPatrol : MonoBehaviour
 
         UpdateAnimationBasedOnSpeed();
 
+    }
+
+    void FixedUpdate()
+    {
+        if (stunned > 0)
+            stunned--;
     }
 
 
@@ -287,5 +300,9 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    public void Stun()
+    {
+        stunned = stunTimer;
+    }
 
 }

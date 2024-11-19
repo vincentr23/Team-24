@@ -9,6 +9,7 @@ public class WhiteCell : MonoBehaviour
     Animator anim;
     [SerializeField] float speed = 3;
     public NavMeshAgent agent;
+    [SerializeField] int timer = 200;
 
     private void Start()
     {
@@ -32,6 +33,15 @@ public class WhiteCell : MonoBehaviour
             agent.ResetPath();
             return;
         }
+        if (timer < 0)
+        {
+            gameObject.SetActive(false);
+            if (target.GetComponent<EnemyPatrol>() != null)
+            {
+                target.GetComponent<EnemyPatrol>().Stun();
+            }
+            else target.SetActive(true);
+        }
         agent.SetDestination(target.transform.position);
         //var newPos = Vector3.MoveTowards(transform.position, target, step);
         //transform.position = newPos;
@@ -42,6 +52,14 @@ public class WhiteCell : MonoBehaviour
         //}
         //else 
         //    anim.SetBool("Running", true);
+    }
+
+    private void FixedUpdate()
+    {
+        if (Vector3.Distance(transform.position, target.transform.position) < 3)
+        {
+            timer--;
+        }
     }
     public void SetTarget(GameObject target)
     {
