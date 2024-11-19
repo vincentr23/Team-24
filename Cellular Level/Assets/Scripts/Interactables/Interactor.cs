@@ -40,16 +40,19 @@ public class Interactor : MonoBehaviour
                 {
                     case "PickUp":
                         heldItems.Add(interactable);
-                        oxygenSystem.CollectOxygen(1);
+                        //oxygenSystem.CollectOxygen(1);
                         numHeldItems++;
                         break;
                     case "White Cell":
                         whiteCellsHeld++; break;
-                    //case "Dropoff":
-                    //    oxygenSystem.CollectOxygen(heldItems.Capacity);
-                        
-                    //  numHeldItems = 0;
-                    //    break;
+                    case "Dropoff":
+                        if (numHeldItems <= 0) break;
+                        oxygenSystem.CollectOxygen(heldItems.Capacity);
+                        numHeldItems--;
+                        break;
+                    case "Win Wall":
+                        oxygenSystem.WinMet();
+                        break;
                     default: 
                         Debug.Log("Invalid tag"); break;
                 }

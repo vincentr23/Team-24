@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,11 +22,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] float totalOxygen = 100f;
     [SerializeField] float oxygenTick = 0.5f;
     [SerializeField] float oxyMult = 10;
+    public int   deliveredOxygen = 0;
+    public int   neededOxygen = 5;
+
+    [Header("General")]
+    [SerializeField] bool winMet = false;
+    public string sceneToLoad;
+    [SerializeField] HUDManager HUD;
+
     // Start is called before the first frame update
     void Start()
     {
         pickupSpawns = GameObject.FindGameObjectsWithTag("Pickup Spawn");
         cancerSpawns = GameObject.FindGameObjectsWithTag("Cancer Spawn");
+        HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUDManager>();
 
         if (numObjects > pickupSpawns.Length) numObjects = (uint)pickupSpawns.Length;
 
@@ -100,8 +110,18 @@ public class GameManager : MonoBehaviour
     }
     public void CollectOxygen(float increase)
     {
+        deliveredOxygen++;
         oxygen += (increase * oxyMult);
         if (oxygen > totalOxygen)
             oxygen = totalOxygen;
+        if (deliveredOxygen >= neededOxygen)
+            winMet = true;
+        HUD.DeliveredOxygen();
+    }
+
+    public void WinMet()
+    {
+        if (deliveredOxygen < neededOxygen) return;
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

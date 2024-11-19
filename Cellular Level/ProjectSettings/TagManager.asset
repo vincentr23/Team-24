@@ -15,6 +15,8 @@ TagManager:
   - Dropoff
   - Cancer Spawn
   - Cancer
+  - Win Wall
+  - HUD
   layers:
   - Default
   - TransparentFX

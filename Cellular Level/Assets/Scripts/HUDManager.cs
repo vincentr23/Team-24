@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
@@ -13,16 +14,18 @@ public class HUDManager : MonoBehaviour
     public Image staminaBar;
     public PlayerController player;
 
+    public TextMeshProUGUI deliveryText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        DeliveredOxygen();
     }
 
     // Update is called once per frame
     void Update()
     {
+        DeliveredOxygen();
         /*while(healthAmount > 0)
         {
             TakeDamage(1);
@@ -59,6 +62,13 @@ public class HUDManager : MonoBehaviour
     {
         oxygenBar.fillAmount = 
             oxygenSystem.GetOxygen() / oxygenSystem.GetTotalOxy();
+    }
+
+    public void DeliveredOxygen()
+    {
+        deliveryText.text = "Delivered: " +
+            oxygenSystem.deliveredOxygen.ToString() +
+            " / " + oxygenSystem.neededOxygen.ToString();
     }
 
 }
