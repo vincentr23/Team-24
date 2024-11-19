@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
 
     public void WinMet()
     {
-        if (deliveredOxygen < neededOxygen) return;
+        if (!winMet) return;
         SceneManager.LoadScene(sceneToLoad);
     }
 }
