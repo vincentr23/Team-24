@@ -31,12 +31,16 @@ public class EnemyPatrol : MonoBehaviour
     private bool canAttack = true;
     public Collider handCollider;
     public Collider armCollider;
-
+    public float detectionRange = 10f; // Range within which the monster detects players
+    public float turnChance = 0.3f;
     [Header("Stun stuff")]
     [SerializeField] int stunned = 0;
     [SerializeField] int stunTimer = 200;
 
 
+    private Quaternion targetRotation; // Target rotation when turning
+    private bool isTurning = false;
+     public float rotationSpeed = 5f;
     private GameObject[] playersInGame;
 
     void Awake()
@@ -64,47 +68,109 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-        if (stunned > 0) agent.speed = 0;
-        else agent.speed = patrolSpeed;
+        if (stunned > 0)
+        {
+            agent.speed = 0;
+            return; // Stop all logic if stunned
+        }
+        else
+        {
+            agent.speed = patrolSpeed;
+        }
 
         GetPlayersInGame();
 
-        if (!isChasingPlayer)
+        // Detect and possibly turn towards a nearby player
+        DetectNearbyPlayers();
+
+        if (!isTurning) // Only continue if the monster is not currently turning
         {
-            Patrol();
-            if (CanSeePlayer())
+            if (!isChasingPlayer)
             {
-                ChasePlayer();
-            }
-        }
-        
-        if (isChasingPlayer)
-        {
-            if (player != null && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
-            {
-                if (canAttack)
+                if (CanSeePlayer())
                 {
-                    AttackPlayer();
+                    ChasePlayer();
                 }
+                Patrol();
             }
 
-            if (!CanSeePlayer() && loseSightTime <= loseSightDuration)
+            if (isChasingPlayer)
             {
-                ChasePlayer();
-                loseSightTime += Time.deltaTime; 
-            }
+                if (player != null && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+                {
+                    if (canAttack)
+                    {
+                        AttackPlayer();
+                    }
+                }
 
-            if (loseSightTime > loseSightDuration)
-            {
-                isChasingPlayer = false;
-                loseSightTime = 0;
+                if (!CanSeePlayer() && loseSightTime <= loseSightDuration)
+                {
+                    ChasePlayer();
+                    loseSightTime += Time.deltaTime;
+                }
+
+                if (loseSightTime > loseSightDuration)
+                {
+                    isChasingPlayer = false;
+                    loseSightTime = 0;
+                }
             }
         }
 
         UpdateAnimationBasedOnSpeed();
-
     }
 
+    private void DetectNearbyPlayers()
+    {
+        foreach (GameObject potentialPlayer in playersInGame)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, potentialPlayer.transform.position);
+
+            if (distanceToPlayer <= detectionRange)
+            {
+                // Roll a random chance to see if the monster should turn towards this player
+                if (Random.value <= turnChance)
+                {
+                    // Set the target player to turn towards
+                    player = potentialPlayer;
+
+                    // Calculate the target rotation to face the player
+                    Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+                    targetRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z));
+
+                    // Start the turning coroutine
+                    StartCoroutine(TurnTowardsPlayer());
+
+                    break; // Only handle the first player found in range
+                }
+            }
+        }
+    }
+
+    private IEnumerator TurnTowardsPlayer()
+    {
+        isTurning = true;
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            // Rotate smoothly towards the target rotation
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Check if the monster can see the player while turning
+            if (CanSeePlayer())
+            {
+                // If the player is visible during the turn, start chasing
+                isChasingPlayer = true;
+                break;
+            }
+
+            yield return null; // Wait for the next frame
+        }
+
+        // Turn is complete
+        isTurning = false;
+    }
     void FixedUpdate()
     {
         if (stunned > 0)
@@ -304,5 +370,6 @@ public class EnemyPatrol : MonoBehaviour
     {
         stunned = stunTimer;
     }
-
 }
+
+

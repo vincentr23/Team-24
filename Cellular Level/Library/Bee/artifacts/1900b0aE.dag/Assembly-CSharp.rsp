@@ -419,6 +419,7 @@
 "Assets/Scripts/ItemCollectCounter.cs"
 "Assets/Scripts/ItemSpawner.cs"
 "Assets/Scripts/MenuJoin.cs"
+"Assets/Scripts/NPCInteractable.cs"
 "Assets/Scripts/Player Scripts/FixLayer.cs"
 "Assets/Scripts/Player Scripts/GuidesController.cs"
 "Assets/Scripts/Player Scripts/Models.cs"

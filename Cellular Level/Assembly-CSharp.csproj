@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{29F17FE1-C24A-648D-05C9-48EDFC7A0213}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCell.cs" />
     <Compile Include="Assets\PolyLabs\PNTD\Free\PNTDSampleConsts.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Scripts\NPCInteractable.cs" />
     <Compile Include="Assets\Scripts\MenuJoin.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\Models.cs" />
     <Compile Include="Assets\FirstPersonController.cs" />
@@ -96,7 +98,9 @@
     <Compile Include="Assets\Dropoff.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\Spawn.cs" />
     <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyPatrol.cs" />
+    <Compile Include="..\..\EnemyPatrol.cs">
+      <Link>Assets\Scripts\Enemy Scripts\EnemyPatrol.cs</Link>
+    </Compile>
     <Compile Include="Assets\Model\3D Character Dummy\_ExampleScene\Scripts\DummyRPMaterialLoader.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactor.cs" />
     <Compile Include="Assets\PolyLabs\BonusAssets\Rotator.cs" />

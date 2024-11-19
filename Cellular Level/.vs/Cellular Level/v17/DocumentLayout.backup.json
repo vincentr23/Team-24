@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\devilanimationscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\devilanimationscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\player scripts\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player scripts\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\player scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\assets\\cancer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\assets\\scripts\\guide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\guide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,14 +35,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DevilAnimationScript.cs",
-              "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\DevilAnimationScript.cs",
-              "RelativeDocumentMoniker": "Assets\\DevilAnimationScript.cs",
-              "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\DevilAnimationScript.cs",
-              "RelativeToolTip": "Assets\\DevilAnimationScript.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\Models.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player Scripts\\Models.cs",
+              "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\Models.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player Scripts\\Models.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T09:27:26.366Z",
+              "WhenOpened": "2024-11-19T11:21:10.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player Scripts\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player Scripts\\PlayerController.cs",
+              "ViewState": "AgIAANwAAAAAAAAAAAAQwPgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T11:10:51.446Z",
               "EditorCaption": ""
             },
             {
@@ -49,9 +66,10 @@
               "RelativeDocumentMoniker": "Assets\\Cancer.cs",
               "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Cancer.cs",
               "RelativeToolTip": "Assets\\Cancer.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAowCoAAAArAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEASURBVDhP7Y8xSwJxGMZ/5/GPkAM/QTiccI5xUG65ieAUgv4dXMTBLxFEtTm4CC1RRPUtHFvERW7I5RqyIZBuEG5S5G0o/4hER7u/6YHn4XmfF3YYxm9jad43xbvyxL1wpXHXkLUXzSPJXeZkWwNYAME0kPpjncJBgdZxi8x\u002Bhslsgj7SVjSPxO/567xB2YrwLLQAaD\u002B1pXJdkTiOTfMmfy1IAYzeR5S8Eo7jfDf\u002BgxTAYrVA2Wrbg5\u002BLfs9nuVqSPc8avbmC2m1NqjfVX\u002BeT8IIFMHwdin7QlPNl9KFG2YrgI6Bz0kl8yQQGLwPpP/cJP0PSe2mKbpHuaTexYAd8AREpdKtYXY\u002BXAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-11-17T07:41:18.444Z"
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowCoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T07:41:18.444Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -61,19 +79,20 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Guide.cs",
               "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Guide.cs",
               "RelativeToolTip": "Assets\\Scripts\\Guide.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAqAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEASURBVDhP7Y8xSwJxGMZ/5/GPkAM/QTiccI5xUG65ieAUgv4dXMTBLxFEtTm4CC1RRPUtHFvERW7I5RqyIZBuEG5S5G0o/4hER7u/6YHn4XmfF3YYxm9jad43xbvyxL1wpXHXkLUXzSPJXeZkWwNYAME0kPpjncJBgdZxi8x\u002Bhslsgj7SVjSPxO/567xB2YrwLLQAaD\u002B1pXJdkTiOTfMmfy1IAYzeR5S8Eo7jfDf\u002BgxTAYrVA2Wrbg5\u002BLfs9nuVqSPc8avbmC2m1NqjfVX\u002BeT8IIFMHwdin7QlPNl9KFG2YrgI6Bz0kl8yQQGLwPpP/cJP0PSe2mKbpHuaTexYAd8AREpdKtYXY\u002BXAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-11-17T07:38:14.948Z"
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T07:38:14.948Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "EnemyPatrol.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
               "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAqwBwBAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAwwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-03T07:35:01.698Z",
               "EditorCaption": ""
