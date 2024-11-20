@@ -361,5 +361,6 @@ public class PlayerController : MonoBehaviour
         GetComponentInChildren<MeshCollider>().enabled = false;
         GetComponent<GuidesController>().enabled = false;
         GetComponentInChildren<CapsuleCollider>().enabled = false;
+        FindObjectOfType<HeartBeat>().RebasePlayers();
     }
 }

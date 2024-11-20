@@ -843,12 +843,10 @@ MonoBehaviour:
     JumpingFalloff: 0.5
   viewClampYMin: -50
   viewClampYMax: 70
-  playerSpawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerSpawn: {fileID: 0}
   m_initialPosition: {fileID: 0}
+  m_isInitialPositionSet: 0
+  setPosition: 0
 --- !u!114 &2721175572324213904
 MonoBehaviour:
   m_ObjectHideFlags: 0

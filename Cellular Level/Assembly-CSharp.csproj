@@ -67,11 +67,13 @@
     <Compile Include="Assets\GameSystems.cs" />
     <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\HeartBeat.cs" />
     <Compile Include="Assets\Scripts\SceneSwitch.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\FixLayer.cs" />
     <Compile Include="Assets\Scripts\UpdateHealthAndLevel.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Input\PlayerMovement.cs" />
+    <Compile Include="Assets\SpawnHandler.cs" />
     <Compile Include="Assets\Scripts\ItemSpawner.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Cancer.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\Scripts\Player Scripts\Models.cs" />
     <Compile Include="Assets\FirstPersonController.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RPMaterialLoader.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\MonsterSounds.cs" />
     <Compile Include="Assets\Scripts\ItemCollectCounter.cs" />
     <Compile Include="Assets\Movement\Basic Motions\_ExampleScene\Scripts\RootmotionReset.cs" />
     <Compile Include="Assets\Scripts\Game Manager.cs" />

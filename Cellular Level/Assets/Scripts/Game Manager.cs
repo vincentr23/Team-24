@@ -80,11 +80,7 @@ public class GameManager : MonoBehaviour
                 cancerSpawns[cancerSpawn].transform.rotation);
         }
 
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
-        {
-            player.GetComponent<PlayerController>().ToggleSpawn(); ;
-        }
+        InitializePlayers();
     }
     
     // Update is called once per frame
@@ -116,8 +112,11 @@ public class GameManager : MonoBehaviour
         if (oxygen > totalOxygen)
             oxygen = totalOxygen;
         if (deliveredOxygen >= neededOxygen)
-            winMet = true;
-        HUD.DeliveredOxygen();
+        {
+            InitializePlayers();
+            SceneManager.LoadScene(sceneToLoad);
+        }
+            
     }
 
     public void WinMet()
@@ -125,4 +124,14 @@ public class GameManager : MonoBehaviour
         if (!winMet) return;
         SceneManager.LoadScene(sceneToLoad);
     }
+
+    void InitializePlayers()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<PlayerController>().ToggleSpawn();
+        }
+    }
 }
+

@@ -251,7 +251,7 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     // Checks if the player is within sight and field of view
-    private bool CanSeePlayer()
+    public bool CanSeePlayer()
     {
         if (!isChasingPlayer)
         {

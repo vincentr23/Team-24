@@ -386,9 +386,11 @@
 "Assets/PolyLabs/BonusAssets/Rotator.cs"
 "Assets/PolyLabs/PNTD/Free/PNTDSampleConsts.cs"
 "Assets/Scripts/Enemy Scripts/EnemyPatrol.cs"
+"Assets/Scripts/Enemy Scripts/MonsterSounds.cs"
 "Assets/Scripts/Game Manager.cs"
 "Assets/Scripts/Guide.cs"
 "Assets/Scripts/HealthManager.cs"
+"Assets/Scripts/HeartBeat.cs"
 "Assets/Scripts/HUDManager.cs"
 "Assets/Scripts/InGameSystem.cs"
 "Assets/Scripts/Interactables/IInteractable.cs"
@@ -412,6 +414,7 @@
 "Assets/Scripts/SpaceshipController.cs"
 "Assets/Scripts/SpaceshipSpawner.cs"
 "Assets/Scripts/UpdateHealthAndLevel.cs"
+"Assets/SpawnHandler.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 /deterministic

@@ -26,6 +26,8 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
+        if (oxygenSystem == null)
+            oxygenSystem = GameObject.FindObjectOfType<GameManager>();
         _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRad, _colliders, (int)_interactableMask);
 
         if (Input.GetKeyDown(KeyCode.E) || (Input.GetMouseButtonDown(0))) {
@@ -73,6 +75,7 @@ public class Interactor : MonoBehaviour
                         numHeldItems--;
                         break;
                     case "Win Wall":
+                        Debug.Log("win wall");
                         oxygenSystem.WinMet();
                         break;
                     default: 

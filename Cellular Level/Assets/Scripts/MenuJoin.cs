@@ -24,6 +24,8 @@ public class MenuJoin : MonoBehaviour
         playerController.m_initialPosition = spawnpoint[numPlayers];
         playerController.m_isInitialPositionSet = true;
         numPlayers++;
+        if (FindObjectOfType<HeartBeat>() != null)
+            FindObjectOfType<HeartBeat>().RebasePlayers();
         Debug.Log("Player joined");
     }
 }

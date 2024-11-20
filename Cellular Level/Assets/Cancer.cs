@@ -17,6 +17,7 @@ public class Cancer : MonoBehaviour
     private GameManager manager;
     private float size;
     [SerializeField] int numThings;
+    [SerializeField] AudioSource sound;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class Cancer : MonoBehaviour
                 if (player.CompareTag("Player"))
                 {
                     player.GetComponent<PlayerController>().Slow();
+                    sound.Play();
                     gameObject.SetActive(false);
                     RespawnTimer = MaxRespawn;
                 }
