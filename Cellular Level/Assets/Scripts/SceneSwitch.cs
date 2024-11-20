@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement; // Required for scene management
 public class SceneSwitch : MonoBehaviour
 {
     public string sceneToLoad; // Name of the scene to load
+    [SerializeField] GameObject[] players;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +12,13 @@ public class SceneSwitch : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the player GameObject has the "Player" tag
         {
             // Load the specified scene
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
+            players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
+            {
+                player.GetComponent<PlayerController>().ToggleSpawn();
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

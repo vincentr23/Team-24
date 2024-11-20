@@ -17,6 +17,7 @@ TagManager:
   - Cancer
   - Win Wall
   - HUD
+  - Dead
   layers:
   - Default
   - TransparentFX

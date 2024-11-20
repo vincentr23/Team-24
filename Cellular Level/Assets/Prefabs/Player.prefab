@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 609047103418411212}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -843,6 +843,11 @@ MonoBehaviour:
     JumpingFalloff: 0.5
   viewClampYMin: -50
   viewClampYMax: 70
+  playerSpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_initialPosition: {fileID: 0}
 --- !u!114 &2721175572324213904
 MonoBehaviour:

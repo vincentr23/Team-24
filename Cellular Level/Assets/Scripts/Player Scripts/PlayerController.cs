@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Models;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,6 +45,9 @@ public class PlayerController : MonoBehaviour
     private bool sprinting;
     private float forwardSpeed;
 
+    [Header("Damage")]
+    bool damaged;
+
     [Header("References")]
     public Transform cameraHolder;
     [SerializeField] Camera targetCamera;
@@ -52,13 +56,17 @@ public class PlayerController : MonoBehaviour
     public PlayerSettingsModel playerSettings;
     public float viewClampYMin = -70;
     public float viewClampYMax = 80;
-    public Transform m_initialPosition;
-    private bool m_isInitialPositionSet = false;
+    //[SerializeField] GameObject[] playerSpawns;
+    [SerializeField] GameObject playerSpawn;
+    public Transform m_initialPosition = null;
+    public bool m_isInitialPositionSet = false;
+    [SerializeField] bool setPosition = false;
 
     Animator anim;
 
     private void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         // hides cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -67,9 +75,6 @@ public class PlayerController : MonoBehaviour
         newPlayerRotate = transform.localRotation.eulerAngles;
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
-        //Setting spawn
-        GameObject[] playerSpawns = GameObject.FindGameObjectsWithTag("Player Spawn");
-        m_initialPosition = playerSpawns[PlayerNum()].transform;
 
         sprinting = false;
         stamina = maxStam;
@@ -81,6 +86,11 @@ public class PlayerController : MonoBehaviour
         // camera stuff
         gameObject.layer = LayerMask.NameToLayer(DecipherLayer(PlayerNum()));
         FixLayers();
+        //Setting spawn
+        transform.position =
+            GameObject.FindGameObjectsWithTag("Player Spawn")[PlayerNum()].
+            transform.position;
+
     }
 
     private void Update()
@@ -97,10 +107,23 @@ public class PlayerController : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (m_initialPosition != null && !m_isInitialPositionSet)
+        if (!m_isInitialPositionSet)
         {
+            playerSpawn = GameObject.FindGameObjectsWithTag("Player Spawn")[PlayerNum()];
+            if (playerSpawn == null) return;
+            if (m_initialPosition == null)
+            {
+                Debug.Log("Here");
+                m_initialPosition = playerSpawn.transform;
+                gameObject.transform.position = m_initialPosition.position;
+                m_isInitialPositionSet = true;
+            }
+        }
+        else if (!setPosition)
+        {
+            if (transform.position == m_initialPosition.position)
+                setPosition = true;
             transform.position = m_initialPosition.position;
-            m_isInitialPositionSet = true;
         }
     }
     public void OnSprint(InputAction.CallbackContext context)
@@ -308,9 +331,35 @@ public class PlayerController : MonoBehaviour
     public void ToggleSpawn()
     {
         m_isInitialPositionSet = false;
+        m_initialPosition = null;
+        setPosition = false;
     }
     private void CalculateStam()
     {
         Stambar.fillAmount = (float)stamina / (float)maxStam;
+    }
+
+    public void IsHit()
+    {
+        if (damaged)
+        {
+            anim.SetTrigger("Death");
+            gameObject.tag = "Dead";
+            DisablePlayer();
+        }
+        else
+        {
+            damaged = true;
+            anim.SetTrigger("Hit");
+        }
+
+    }
+
+    private void DisablePlayer()
+    {
+        GetComponent<PlayerController>().enabled = false;
+        GetComponentInChildren<MeshCollider>().enabled = false;
+        GetComponent<GuidesController>().enabled = false;
+        GetComponentInChildren<CapsuleCollider>().enabled = false;
     }
 }

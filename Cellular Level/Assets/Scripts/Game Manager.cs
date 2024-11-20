@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool winMet = false;
     public string sceneToLoad;
     [SerializeField] HUDManager HUD;
+    public GameObject[] playerSpawns;
 
     // Start is called before the first frame update
     void Start()
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerController>().ToggleSpawn(); ;
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {

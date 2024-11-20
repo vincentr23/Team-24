@@ -22,6 +22,7 @@ public class MenuJoin : MonoBehaviour
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.m_initialPosition = spawnpoint[numPlayers];
+        playerController.m_isInitialPositionSet = true;
         numPlayers++;
         Debug.Log("Player joined");
     }

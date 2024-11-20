@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -295,6 +292,7 @@ public class EnemyPatrol : MonoBehaviour
                 Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
+                Debug.Log("Found player");
                 // Player is within the field of view
                 if (angle < fieldOfViewAngle / 2)
                 {
@@ -351,6 +349,7 @@ public class EnemyPatrol : MonoBehaviour
         // Check if the object hit has the Player tag
             if (other.CompareTag("Player"))
             {
+                other.GetComponent<PlayerController>().IsHit();
                 Debug.Log("Player hit by monster!");
             }
     }
