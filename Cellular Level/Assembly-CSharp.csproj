@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\SpaceshipController.cs" />
     <Compile Include="Assets\Scripts\SpaceshipSpawner.cs" />
     <Compile Include="Assets\Scripts\Interactables\White Cells\WhiteCellPickup.cs" />
+    <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\InGameSystem.cs" />
     <Compile Include="Assets\GameSystems.cs" />
     <Compile Include="Assets\Scripts\Interactables\Pickups.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyPatrol.cs" />
     <Compile Include="Assets\Model\3D Character Dummy\_ExampleScene\Scripts\DummyRPMaterialLoader.cs" />
     <Compile Include="Assets\Scripts\Interactables\Interactor.cs" />
+    <Compile Include="Assets\GameOver.cs" />
     <Compile Include="Assets\PolyLabs\BonusAssets\Rotator.cs" />
   </ItemGroup>
   <ItemGroup>

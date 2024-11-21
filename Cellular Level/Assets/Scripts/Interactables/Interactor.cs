@@ -71,7 +71,7 @@ public class Interactor : MonoBehaviour
                         whiteCellsHeld++; break;
                     case "Dropoff":
                         if (numHeldItems <= 0) break;
-                        oxygenSystem.CollectOxygen(heldItems.Capacity);
+                        oxygenSystem.CollectOxygen(1);
                         numHeldItems--;
                         break;
                     case "Win Wall":

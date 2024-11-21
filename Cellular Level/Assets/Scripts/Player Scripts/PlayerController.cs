@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Damage")]
     bool damaged;
+    [SerializeField] GameObject deathScreen;
 
     [Header("References")]
     public Transform cameraHolder;
@@ -362,5 +363,6 @@ public class PlayerController : MonoBehaviour
         GetComponent<GuidesController>().enabled = false;
         GetComponentInChildren<CapsuleCollider>().enabled = false;
         FindObjectOfType<HeartBeat>().RebasePlayers();
+        deathScreen.SetActive(true);
     }
 }

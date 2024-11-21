@@ -18,6 +18,7 @@ TagManager:
   - Win Wall
   - HUD
   - Dead
+  - Input
   layers:
   - Default
   - TransparentFX

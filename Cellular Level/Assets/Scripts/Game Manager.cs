@@ -86,11 +86,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Loss();
         foreach (var cancer in cancers)
         {
             cancer.SetActive(false);
         }
         cancers.Clear();
+
     }
     private void FixedUpdate()
     {
@@ -116,7 +118,6 @@ public class GameManager : MonoBehaviour
             InitializePlayers();
             SceneManager.LoadScene(sceneToLoad);
         }
-            
     }
 
     public void WinMet()
@@ -131,6 +132,17 @@ public class GameManager : MonoBehaviour
         foreach (GameObject player in players)
         {
             player.GetComponent<PlayerController>().ToggleSpawn();
+        }
+    }
+
+    void Loss()
+    {
+        GameObject active = GameObject.FindGameObjectWithTag("Player");
+        if ((oxygen < 0) || (active == null))
+        {
+            
+            GameObject.FindGameObjectWithTag("Input").SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
