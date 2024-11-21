@@ -30,6 +30,7 @@ public class EnemyPatrol : MonoBehaviour
     public Collider armCollider;
     public float detectionRange = 10f; // Range within which the monster detects players
     public float turnChance = 0.3f;
+    public GameObject[] monstersInLevel;
     [Header("Stun stuff")]
     [SerializeField] int stunned = 0;
     [SerializeField] int stunTimer = 200;
@@ -86,7 +87,11 @@ public class EnemyPatrol : MonoBehaviour
             {
                 if (CanSeePlayer())
                 {
-                    ChasePlayer();
+                    foreach (GameObject monster in monstersInLevel)
+                    {
+                        EnemyPatrol enemyPatrol = monster.GetComponent<EnemyPatrol>();
+                        enemyPatrol.ChasePlayer();
+                    }
                 }
                 Patrol();
             }

@@ -3,14 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy scripts\\enemypatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\player scripts\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\liang\\Desktop\\EnemyPatrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\assets\\scripts\\player scripts\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player scripts\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|c:\\users\\liang\\desktop\\team-24\\cellular level\\assets\\scripts\\player scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\assets\\scripts\\player scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29F17FE1-C24A-648D-05C9-48EDFC7A0213}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -29,11 +33,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "EnemyPatrol.cs",
+              "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
+              "ToolTip": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy Scripts\\EnemyPatrol.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwFUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T12:30:07.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Models.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\Models.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player Scripts\\Models.cs",
@@ -41,12 +58,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Player Scripts\\Models.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T11:21:10.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T11:21:10.964Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Player Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player Scripts\\PlayerController.cs",
@@ -54,12 +70,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Player Scripts\\PlayerController.cs",
               "ViewState": "AgIAANwAAAAAAAAAAAAQwPgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T11:10:51.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T11:10:51.446Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Cancer.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Cancer.cs",
               "RelativeDocumentMoniker": "Assets\\Cancer.cs",
@@ -67,12 +82,11 @@
               "RelativeToolTip": "Assets\\Cancer.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAowCoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T07:41:18.444Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T07:41:18.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Guide.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\Team-24\\Cellular Level\\Assets\\Scripts\\Guide.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Guide.cs",
@@ -80,12 +94,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Guide.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T07:38:14.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T07:38:14.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "EnemyPatrol.cs",
               "DocumentMoniker": "C:\\Users\\liang\\Desktop\\EnemyPatrol.cs",
               "RelativeDocumentMoniker": "..\\..\\EnemyPatrol.cs",

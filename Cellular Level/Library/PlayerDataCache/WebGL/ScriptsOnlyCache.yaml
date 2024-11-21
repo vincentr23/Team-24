@@ -6,14 +6,18 @@ ScriptsOnlyBuild:
     - EnemyPatrol
     - FixLayer
     - GameManager
+    - GameOver
     - Guide
     - GuidesController
     - HUDManager
+    - HeartBeat
     - HeartbeatPulse
     - Interactor
     - MenuJoin
+    - MonsterSounds
     - MoveCamera
     - NPCInteractable
+    - PauseMenu
     - Pickups
     - PlayerAnimations
     - PlayerController
@@ -23,6 +27,8 @@ ScriptsOnlyBuild:
     - WhiteCellPickup
     CFXRRuntime.dll:
     - CartoonFX.CFXR_Effect
+    Unity.AI.Navigation.Editor.dll:
+    - Unity.AI.Navigation.Editor.NavMeshAssetManager
     Unity.AI.Navigation.dll:
     - Unity.AI.Navigation.NavMeshSurface
     Unity.Animation.Rigging.dll:
@@ -32,11 +38,13 @@ ScriptsOnlyBuild:
     - UnityEngine.Animations.Rigging.RigBuilder
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
+    - UnityEngine.InputSystem.InputActionReference
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.PlayerInput
     - UnityEngine.InputSystem.PlayerInputManager
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
+    - UnityEngine.InputSystem.UI.InputSystemUIInputModule
     Unity.RenderPipelines.Core.Runtime:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -70,6 +78,8 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.UI.DebugUIHandlerVector3
     - UnityEngine.Rendering.UI.DebugUIHandlerVector4
     - UnityEngine.Rendering.UI.UIFoldout
+    Unity.RenderPipelines.Core.Runtime.dll:
+    - UnityEngine.Rendering.Volume
     Unity.RenderPipelines.Universal.Editor.dll:
     - UnityEditor.Rendering.Universal.UniversalProjectSettings
     Unity.RenderPipelines.Universal.Runtime.dll:
@@ -99,10 +109,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -124,6 +132,8 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
     UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
@@ -224,28 +234,13 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SummonWhiteCells
     methodName: Summon
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: OnPause
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerButton
     methodName: OnAction
   - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
-    methodName: OnScrollbarClicked
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
-    methodName: OnScrollbarClicked
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
-    methodName: OnDecrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
-    methodName: OnDecrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
-    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
-    methodName: OnIncrement
-  - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
     methodName: OnDecrement
   - assembly: Unity.RenderPipelines.Core.Runtime
@@ -262,6 +257,24 @@ ScriptsOnlyBuild:
     methodName: OnDecrement
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerObjectPopupField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
+    methodName: OnScrollbarClicked
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
+    methodName: OnScrollbarClicked
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
+    methodName: OnIncrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
+    methodName: OnDecrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
+    methodName: OnDecrement
+  - assembly: Unity.RenderPipelines.Core.Runtime
+    fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerIntField
     methodName: OnIncrement
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
@@ -284,6 +297,15 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: SummonWhiteCells
     methodName: Summon
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: OnPause
+  - assembly: Assembly-CSharp
+    fullTypeName: GameOver
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: GameOver
+    methodName: PlayGame
   sceneClasses:
     Assets/Scenes/CaveLevel.unity:
     - Class: 1
@@ -314,6 +336,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 90
@@ -327,73 +353,79 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1926}
+      Script: {instanceID: 1886}
     - Class: 114
-      Script: {instanceID: 1970}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 2008}
+      Script: {instanceID: 1950}
     - Class: 114
-      Script: {instanceID: 2674}
+      Script: {instanceID: 2440}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 3138}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 3990}
     - Class: 114
-      Script: {instanceID: 3424}
+      Script: {instanceID: 4516}
     - Class: 114
-      Script: {instanceID: 3618}
+      Script: {instanceID: 4966}
     - Class: 114
-      Script: {instanceID: 3836}
+      Script: {instanceID: 5064}
     - Class: 114
-      Script: {instanceID: 5116}
+      Script: {instanceID: 5786}
     - Class: 114
-      Script: {instanceID: 5624}
+      Script: {instanceID: 5884}
     - Class: 114
-      Script: {instanceID: 5646}
+      Script: {instanceID: 5898}
     - Class: 114
-      Script: {instanceID: 5968}
+      Script: {instanceID: 6570}
     - Class: 114
-      Script: {instanceID: 6620}
+      Script: {instanceID: 7136}
     - Class: 114
-      Script: {instanceID: 6644}
+      Script: {instanceID: 7948}
     - Class: 114
-      Script: {instanceID: 6798}
+      Script: {instanceID: 8054}
     - Class: 114
-      Script: {instanceID: 7092}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 7210}
+      Script: {instanceID: 9612}
     - Class: 114
-      Script: {instanceID: 7844}
+      Script: {instanceID: 9680}
     - Class: 114
-      Script: {instanceID: 7990}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 8004}
+      Script: {instanceID: 12326}
     - Class: 114
-      Script: {instanceID: 8904}
+      Script: {instanceID: 13174}
     - Class: 114
-      Script: {instanceID: 9080}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 9450}
+      Script: {instanceID: 13436}
     - Class: 114
-      Script: {instanceID: 9558}
+      Script: {instanceID: 13556}
     - Class: 114
-      Script: {instanceID: 9938}
+      Script: {instanceID: 13744}
     - Class: 114
-      Script: {instanceID: 10574}
+      Script: {instanceID: 14042}
     - Class: 114
-      Script: {instanceID: 11210}
+      Script: {instanceID: 14814}
     - Class: 114
-      Script: {instanceID: 11388}
+      Script: {instanceID: 14964}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 15078}
     - Class: 114
-      Script: {instanceID: 12544}
+      Script: {instanceID: 15828}
     - Class: 114
-      Script: {instanceID: 12754}
+      Script: {instanceID: 15896}
     - Class: 114
-      Script: {instanceID: 13754}
+      Script: {instanceID: 16128}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 17454}
+    - Class: 114
+      Script: {instanceID: 17968}
+    - Class: 114
+      Script: {instanceID: 18652}
+    - Class: 114
+      Script: {instanceID: 20534}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -425,6 +457,73 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 238
+      Script: {instanceID: 0}
+    Assets/Scenes/GameOver.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1950}
+    - Class: 114
+      Script: {instanceID: 2898}
+    - Class: 114
+      Script: {instanceID: 4516}
+    - Class: 114
+      Script: {instanceID: 4950}
+    - Class: 114
+      Script: {instanceID: 5786}
+    - Class: 114
+      Script: {instanceID: 6448}
+    - Class: 114
+      Script: {instanceID: 6570}
+    - Class: 114
+      Script: {instanceID: 7136}
+    - Class: 114
+      Script: {instanceID: 7948}
+    - Class: 114
+      Script: {instanceID: 8288}
+    - Class: 114
+      Script: {instanceID: 9294}
+    - Class: 114
+      Script: {instanceID: 15780}
+    - Class: 114
+      Script: {instanceID: 15896}
+    - Class: 114
+      Script: {instanceID: 16128}
+    - Class: 114
+      Script: {instanceID: 18338}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/Heart.unity:
     - Class: 1
@@ -470,147 +569,149 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1920}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 1922}
+      Script: {instanceID: 1950}
     - Class: 114
-      Script: {instanceID: 1924}
+      Script: {instanceID: 2040}
     - Class: 114
-      Script: {instanceID: 1926}
+      Script: {instanceID: 2898}
     - Class: 114
-      Script: {instanceID: 1928}
+      Script: {instanceID: 3470}
     - Class: 114
-      Script: {instanceID: 1934}
+      Script: {instanceID: 3990}
     - Class: 114
-      Script: {instanceID: 1970}
+      Script: {instanceID: 4018}
     - Class: 114
-      Script: {instanceID: 2092}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 2454}
+      Script: {instanceID: 4516}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 4966}
     - Class: 114
-      Script: {instanceID: 3068}
+      Script: {instanceID: 4980}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 5786}
     - Class: 114
-      Script: {instanceID: 3564}
+      Script: {instanceID: 5884}
     - Class: 114
-      Script: {instanceID: 3618}
+      Script: {instanceID: 5898}
     - Class: 114
-      Script: {instanceID: 3640}
+      Script: {instanceID: 6208}
     - Class: 114
-      Script: {instanceID: 3786}
+      Script: {instanceID: 6258}
     - Class: 114
-      Script: {instanceID: 4348}
+      Script: {instanceID: 6570}
     - Class: 114
-      Script: {instanceID: 5116}
+      Script: {instanceID: 6880}
     - Class: 114
-      Script: {instanceID: 5118}
+      Script: {instanceID: 7136}
     - Class: 114
-      Script: {instanceID: 5162}
+      Script: {instanceID: 7232}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 7504}
     - Class: 114
-      Script: {instanceID: 5278}
+      Script: {instanceID: 7948}
     - Class: 114
-      Script: {instanceID: 5464}
+      Script: {instanceID: 8118}
     - Class: 114
-      Script: {instanceID: 5480}
+      Script: {instanceID: 8288}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 8586}
     - Class: 114
-      Script: {instanceID: 5968}
+      Script: {instanceID: 9066}
     - Class: 114
-      Script: {instanceID: 6032}
+      Script: {instanceID: 9308}
     - Class: 114
-      Script: {instanceID: 6138}
+      Script: {instanceID: 9680}
     - Class: 114
-      Script: {instanceID: 6214}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 6604}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 6644}
+      Script: {instanceID: 13174}
     - Class: 114
-      Script: {instanceID: 6652}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 6664}
+      Script: {instanceID: 13548}
     - Class: 114
-      Script: {instanceID: 7092}
-    - Class: 114
-      Script: {instanceID: 7210}
-    - Class: 114
-      Script: {instanceID: 7538}
-    - Class: 114
-      Script: {instanceID: 7844}
-    - Class: 114
-      Script: {instanceID: 7990}
-    - Class: 114
-      Script: {instanceID: 8004}
-    - Class: 114
-      Script: {instanceID: 8502}
-    - Class: 114
-      Script: {instanceID: 8560}
-    - Class: 114
-      Script: {instanceID: 8574}
-    - Class: 114
-      Script: {instanceID: 8704}
-    - Class: 114
-      Script: {instanceID: 8904}
-    - Class: 114
-      Script: {instanceID: 9080}
-    - Class: 114
-      Script: {instanceID: 9450}
-    - Class: 114
-      Script: {instanceID: 9558}
-    - Class: 114
-      Script: {instanceID: 9764}
-    - Class: 114
-      Script: {instanceID: 9828}
-    - Class: 114
-      Script: {instanceID: 9938}
-    - Class: 114
-      Script: {instanceID: 10082}
-    - Class: 114
-      Script: {instanceID: 10190}
-    - Class: 114
-      Script: {instanceID: 10432}
-    - Class: 114
-      Script: {instanceID: 10502}
-    - Class: 114
-      Script: {instanceID: 10574}
-    - Class: 114
-      Script: {instanceID: 11156}
-    - Class: 114
-      Script: {instanceID: 11210}
-    - Class: 114
-      Script: {instanceID: 11336}
-    - Class: 114
-      Script: {instanceID: 11408}
-    - Class: 114
-      Script: {instanceID: 11664}
-    - Class: 114
-      Script: {instanceID: 11962}
-    - Class: 114
-      Script: {instanceID: 12102}
-    - Class: 114
-      Script: {instanceID: 12194}
-    - Class: 114
-      Script: {instanceID: 12292}
-    - Class: 114
-      Script: {instanceID: 12422}
-    - Class: 114
-      Script: {instanceID: 12544}
-    - Class: 114
-      Script: {instanceID: 12580}
-    - Class: 114
-      Script: {instanceID: 12864}
+      Script: {instanceID: 13556}
     - Class: 114
       Script: {instanceID: 13696}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13744}
     - Class: 114
-      Script: {instanceID: 30870}
+      Script: {instanceID: 14572}
+    - Class: 114
+      Script: {instanceID: 14602}
+    - Class: 114
+      Script: {instanceID: 14622}
+    - Class: 114
+      Script: {instanceID: 14810}
+    - Class: 114
+      Script: {instanceID: 14814}
+    - Class: 114
+      Script: {instanceID: 14826}
+    - Class: 114
+      Script: {instanceID: 14964}
+    - Class: 114
+      Script: {instanceID: 15062}
+    - Class: 114
+      Script: {instanceID: 15386}
+    - Class: 114
+      Script: {instanceID: 15414}
+    - Class: 114
+      Script: {instanceID: 15896}
+    - Class: 114
+      Script: {instanceID: 16066}
+    - Class: 114
+      Script: {instanceID: 16092}
+    - Class: 114
+      Script: {instanceID: 16128}
+    - Class: 114
+      Script: {instanceID: 16488}
+    - Class: 114
+      Script: {instanceID: 16692}
+    - Class: 114
+      Script: {instanceID: 16808}
+    - Class: 114
+      Script: {instanceID: 17056}
+    - Class: 114
+      Script: {instanceID: 17092}
+    - Class: 114
+      Script: {instanceID: 17176}
+    - Class: 114
+      Script: {instanceID: 17326}
+    - Class: 114
+      Script: {instanceID: 17442}
+    - Class: 114
+      Script: {instanceID: 17482}
+    - Class: 114
+      Script: {instanceID: 17964}
+    - Class: 114
+      Script: {instanceID: 18210}
+    - Class: 114
+      Script: {instanceID: 18448}
+    - Class: 114
+      Script: {instanceID: 18490}
+    - Class: 114
+      Script: {instanceID: 18822}
+    - Class: 114
+      Script: {instanceID: 18890}
+    - Class: 114
+      Script: {instanceID: 19094}
+    - Class: 114
+      Script: {instanceID: 19122}
+    - Class: 114
+      Script: {instanceID: 19354}
+    - Class: 114
+      Script: {instanceID: 19634}
+    - Class: 114
+      Script: {instanceID: 19992}
+    - Class: 114
+      Script: {instanceID: 20204}
+    - Class: 114
+      Script: {instanceID: 101166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -658,40 +759,16 @@ ScriptsOnlyBuild:
     className: UniversalRenderPipelineAsset
   - hash:
       serializedVersion: 2
-      Hash: d41ab9b5ea92474f9c0a6937a0607ce1
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: ContentSizeFitter
+      Hash: bb8e7d3c9a6ed76f95ebf2ab6ec8db47
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Cancer
   - hash:
       serializedVersion: 2
-      Hash: b5007673bbbdb9d12597a1d8201370f5
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: 915204dac8acad99f076d6e72ada0a0f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 540882762544409cc4530e60db00e951
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
-  - hash:
-      serializedVersion: 2
-      Hash: d5cd7f207e91ca8336c65a577a6fb2a0
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: ScrollRect
-  - hash:
-      serializedVersion: 2
-      Hash: ed2c59b75f8f3cd8df4cd4387d965e71
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerVector2
+      Hash: 9d5bf088070839ce7647d1633043aefd
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WhiteCell
   - hash:
       serializedVersion: 2
       Hash: 55060a7bf226ac385ce19ebd450f199f
@@ -704,18 +781,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: 65e5085b96e7af5186f094c75c2d8f7f
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: Rig
-  - hash:
-      serializedVersion: 2
-      Hash: c0e97241d89036e9763306181a147128
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: TwistChainConstraint
   - hash:
       serializedVersion: 2
       Hash: f45600bcc886206dd55a3208474aad61
@@ -742,36 +807,6 @@ ScriptsOnlyBuild:
     className: HIDDescriptorWindow
   - hash:
       serializedVersion: 2
-      Hash: 994399575f7cccab343193b4333bcb6f
-    assemblyName: CFXRDemo
-    namespaceName: CartoonFX
-    className: CFXR_Demo
-  - hash:
-      serializedVersion: 2
-      Hash: 95c8a8c68e664d4868755f06e7c55997
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: DepthOfField
-  - hash:
-      serializedVersion: 2
-      Hash: 65d7429f900cd0d7d58933027dfdd825
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: CompositeShadowCaster2D
-  - hash:
-      serializedVersion: 2
-      Hash: a9a9985bc600ab81586355efc506ee17
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: WhiteBalance
-  - hash:
-      serializedVersion: 2
-      Hash: 6b2b20d5352b9f1294595326f54bd3c2
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerObjectPopupField
-  - hash:
-      serializedVersion: 2
       Hash: ad49e20f31ed572e586aa8bbaafb591b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -784,58 +819,16 @@ ScriptsOnlyBuild:
     className: AdvancedDropdownWindow
   - hash:
       serializedVersion: 2
-      Hash: dffbd3da665050713c4b504a586a3ff5
-    assemblyName: CFXRDemo
-    namespaceName: CartoonFX
-    className: CFXR_Demo_Translate
-  - hash:
-      serializedVersion: 2
-      Hash: 158ea04b653ef20da50f27da42170155
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: ProbeVolumePerSceneData
-  - hash:
-      serializedVersion: 2
-      Hash: d61e8a2c27c190c240e1c5eb94884d0c
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HUDManager
-  - hash:
-      serializedVersion: 2
-      Hash: b88e78b6860b6061b2c681ea9b80b6bf
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerToggle
-  - hash:
-      serializedVersion: 2
       Hash: 1bb96abdc6e5157fba88bc199716c34c
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Pickups
   - hash:
       serializedVersion: 2
-      Hash: fce99de7ab700e0c4c466ebd583aa306
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ColorLookup
-  - hash:
-      serializedVersion: 2
-      Hash: 75563a97b24811c153add23104e2638f
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: XRSystemData
-  - hash:
-      serializedVersion: 2
       Hash: 1321993db8249e1e05e1e0492b2bbdc3
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 3d26478faca6e0bb31b2897cb8da4060
-    assemblyName: CFXRRuntime
-    namespaceName: CartoonFX
-    className: CFXR_ParticleText
   - hash:
       serializedVersion: 2
       Hash: 04b6685b6f724c0d6024e6b6f96c8202
@@ -850,30 +843,6 @@ ScriptsOnlyBuild:
     className: UnityMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2541c03d117382d4ebbe0bb0775dd2dc
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerProgressBar
-  - hash:
-      serializedVersion: 2
-      Hash: 3851b298bdb429888427e6274e04be2a
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: ProbeReferenceVolumeProfile
-  - hash:
-      serializedVersion: 2
-      Hash: dbe4f05d59170430398f6453d7253fe5
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerWidget
-  - hash:
-      serializedVersion: 2
-      Hash: 9968efb68bafd5f032879119c0d35a6c
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Guide
-  - hash:
-      serializedVersion: 2
       Hash: fce9b835d1e8b08e7ecea8da19f21986
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -884,12 +853,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.ProBuilder
     namespaceName: UnityEngine.ProBuilder
     className: ColorPalette
-  - hash:
-      serializedVersion: 2
-      Hash: fe111e830148f07e5735ebe7620f752e
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: ChromaticAberration
   - hash:
       serializedVersion: 2
       Hash: 28fd3d045acc780719a17f02073eb448
@@ -910,28 +873,16 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 1cb038fd47d82e17c4a69c2697cc2ec0
-    assemblyName: Unity.Animation.Rigging.DocCodeExamples
-    namespaceName: DocCodeExamples
-    className: CustomRigBuilderEvaluator
-  - hash:
-      serializedVersion: 2
       Hash: b838cbada0b03f1cfbaebc8e124f4f39
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.OnScreen
     className: OnScreenButton
   - hash:
       serializedVersion: 2
-      Hash: 4457ce3d43ff730d542f03e62399ff70
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: BoneRenderer
-  - hash:
-      serializedVersion: 2
-      Hash: 041d89bf0470df44922eec73e9bf30e5
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: TwoBoneIKConstraint
+      Hash: 915204dac8acad99f076d6e72ada0a0f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: d90629714fa6b0145fcaffc87f5c6559
@@ -952,30 +903,6 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 9f355e210e7950e47ad1391c7681435b
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerEnumField
-  - hash:
-      serializedVersion: 2
-      Hash: 99431ab619f390cf9400bd06d3e1bdd3
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: UniversalRenderPipelineGlobalSettings
-  - hash:
-      serializedVersion: 2
-      Hash: 2f451ec7282a8c9375f5ce3f903c537c
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FixLayer
-  - hash:
-      serializedVersion: 2
-      Hash: 5c21f4846181ee6e245db1fcfb62fc0e
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerContainer
-  - hash:
-      serializedVersion: 2
       Hash: 7bdff9e91edfd9600f92a185def7e34a
     assemblyName: Unity.VisualScripting.Flow
     namespaceName: Unity.VisualScripting
@@ -986,18 +913,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSelectMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 006cf428550f7af7c78bbd72b6f9c495
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: DecalRendererFeature
-  - hash:
-      serializedVersion: 2
-      Hash: f5df081962c06a171f380eb236cd1f3c
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerVBox
   - hash:
       serializedVersion: 2
       Hash: 960935b102b3064f4b924de16426e340
@@ -1028,12 +943,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Flow
     namespaceName: Unity.VisualScripting
     className: ScriptGraphAsset
-  - hash:
-      serializedVersion: 2
-      Hash: e4b7831f0a9e91f079eb40ea24427631
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ColorAdjustments
   - hash:
       serializedVersion: 2
       Hash: fb79e95da8891fc7ac6c36ca6967af23
@@ -1078,18 +987,6 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 919dc7ec08f773fcae2d21a1e018bd99
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: MotionBlur
-  - hash:
-      serializedVersion: 2
-      Hash: fe0a072dbdcbca34d5003c5299de3aaf
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: SceneRenderPipeline
-  - hash:
-      serializedVersion: 2
       Hash: c933b590b3badb5918fa01e73cd5cc0c
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1102,34 +999,10 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreak2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 9f27b94c3c17b0da0d39632b61a4b711
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: Bloom
-  - hash:
-      serializedVersion: 2
-      Hash: fbcf9f200f1b87e2ce04092a377bcb7a
-    assemblyName: Unity.Animation.Rigging.DocCodeExamples
-    namespaceName: DocCodeExamples
-    className: CustomPlayableGraphEvaluator
-  - hash:
-      serializedVersion: 2
       Hash: 215d2dc6ec6ea06728398ea39a103cb3
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.OnScreen
     className: OnScreenStick
-  - hash:
-      serializedVersion: 2
-      Hash: 9f92e751d2286296361a1d06b9e90c1e
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: MotionBlur
-  - hash:
-      serializedVersion: 2
-      Hash: 86c7af8b5b2ba0d2fa1b4a455eaf4b3e
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: InGameSystem
   - hash:
       serializedVersion: 2
       Hash: 96e7bcfd2d072992dab64ac44058b930
@@ -1138,34 +1011,16 @@ ScriptsOnlyBuild:
     className: UnityOnCancelMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8fe6d4f095ce838f5396d1867140a9b6
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: CameraSwitcher
-  - hash:
-      serializedVersion: 2
       Hash: 7e9cad7f71f9cc52f699bbd2d2a75734
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c307188b084d7bae2b5fe7ace22248fb
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: UniversalRenderPipelineEditorResources
-  - hash:
-      serializedVersion: 2
       Hash: a27ee176bede894baa3b4a299d8a75c8
     assemblyName: Assembly-CSharp
     namespaceName: KevinIglesias
     className: DummyRPMaterialLoader
-  - hash:
-      serializedVersion: 2
-      Hash: ffaaa6b08bc8a8928411e8e402432358
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessVolume
   - hash:
       serializedVersion: 2
       Hash: e88d71ef93aba4e7faf243430f6a10ce
@@ -1186,12 +1041,6 @@ ScriptsOnlyBuild:
     className: RemoteInputPlayerConnection
   - hash:
       serializedVersion: 2
-      Hash: b6792907b61f32faaf3e23f55e750107
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessResources
-  - hash:
-      serializedVersion: 2
       Hash: db9b308769d19e1f9e161df0392c23ca
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1204,34 +1053,16 @@ ScriptsOnlyBuild:
     className: UnityOnBeginDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 415316b9bbc4e339c901a46503e2790b
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: VolumeProfile
-  - hash:
-      serializedVersion: 2
       Hash: e3e8664035357fc3cb2713a5c719e060
     assemblyName: Unity.ProBuilder
     namespaceName: UnityEngine.ProBuilder
     className: ColliderBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 74ec5188daaec08302563b6fbc84a876
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ItemCollector
-  - hash:
-      serializedVersion: 2
       Hash: f4ed37218345922f7b22cf19ac629a36
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerAnimations
-  - hash:
-      serializedVersion: 2
-      Hash: c833d8ddc320fe5153f6a88cef23c858
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerObject
   - hash:
       serializedVersion: 2
       Hash: 10c17b309bdca62b4d7fbaf113ed4ca0
@@ -1252,28 +1083,10 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnter2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 5f70b16cd9acc9c1dd88b51b6ed89669
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerIndirectToggle
-  - hash:
-      serializedVersion: 2
       Hash: 061a5d77ce0aa52a60c21c566c6d8af2
     assemblyName: Unity.AI.Navigation
     namespaceName: Unity.AI.Navigation
     className: NavMeshModifierVolume
-  - hash:
-      serializedVersion: 2
-      Hash: c65fb8f721cc4462e7a642974c37d3c0
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: DepthOfField
-  - hash:
-      serializedVersion: 2
-      Hash: 3e1ba87a30ba656beab510dc2fa7cdc3
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: ProbeVolumeAsset
   - hash:
       serializedVersion: 2
       Hash: 5874b789cd9832847c61ebfa803213af
@@ -1282,28 +1095,10 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
-      Hash: e8fd74e57e72e8e4ef28792881adb864
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerUIntField
-  - hash:
-      serializedVersion: 2
-      Hash: 58570e231c93c2f96918856759b81286
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerPanel
-  - hash:
-      serializedVersion: 2
       Hash: 9dd54ce33440072d6692a67e0c384ad1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 5c2a5af4658ede896d072a8a641d706e
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ColorCurves
   - hash:
       serializedVersion: 2
       Hash: bf0842d88681628b29beb00b5e2ab785
@@ -1312,82 +1107,16 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8c4221f581c8835b811922329b5efb5f
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WhiteCellPickup
-  - hash:
-      serializedVersion: 2
-      Hash: 1af7e9f99d251dfa1961d4b644ced380
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Experimental.Rendering.Universal
-    className: PixelPerfectCamera
-  - hash:
-      serializedVersion: 2
-      Hash: a9f0153fc675e1f4ade818b83e4ff0c1
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: VolumeComponent
-  - hash:
-      serializedVersion: 2
-      Hash: 3a5957dee23157abcc78371427f290c3
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiAimConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: 0e663c222bb83f92bce24cf73a0e299f
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: ProbeTouchupVolume
-  - hash:
-      serializedVersion: 2
       Hash: ef38c1407dba8c1f5d69f5db61a694fe
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: AnimatorMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 47f78e94e3df8d612cefa1307a19e2ce
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerValue
-  - hash:
-      serializedVersion: 2
       Hash: 9637dcdf3068a91dfe653e61bb82f13d
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextMeshProUGUI
-  - hash:
-      serializedVersion: 2
-      Hash: 84323412974c60d703405a293123de1f
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: MonsterController
-  - hash:
-      serializedVersion: 2
-      Hash: c0a2b4d13675f08bfb211e044c334e68
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerIntField
-  - hash:
-      serializedVersion: 2
-      Hash: 3ec218b63ce6384a3b005c0cd27fcef4
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: DampedTransform
-  - hash:
-      serializedVersion: 2
-      Hash: d771cabeaa363771c54f6c41824f7abb
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: LiftGammaGain
-  - hash:
-      serializedVersion: 2
-      Hash: cde402e184a6ab530144506bc9d6a0af
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerVector4
   - hash:
       serializedVersion: 2
       Hash: c9ea7fc6e584a91f99e24369a904c607
@@ -1402,22 +1131,10 @@ ScriptsOnlyBuild:
     className: BasicMotionsRootmotionReset
   - hash:
       serializedVersion: 2
-      Hash: cb49ce80d4b69cb2ed30d83bfcb146ae
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerBitField
-  - hash:
-      serializedVersion: 2
       Hash: 4f353524ce6564e40764f1ea080b2d85
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTriggerStay2DMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 5333e0be233f2bc1f18c4064b7483a04
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SpaceshipSpawner
   - hash:
       serializedVersion: 2
       Hash: 13f262cc0741566a7ab72682984bc3e1
@@ -1462,28 +1179,10 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
-      Hash: 2deddcdd5f664164bb803747210cbba2
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerRow
-  - hash:
-      serializedVersion: 2
       Hash: 33eb495d99aa9bea4dbe8b4c4e02c7bb
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem
     className: InputActionReference
-  - hash:
-      serializedVersion: 2
-      Hash: 5fcd2e65b2c0f7905accdc3e40a1f082
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Cancer
-  - hash:
-      serializedVersion: 2
-      Hash: 47247e29ff0f727264f83a7f754b229c
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: LensFlareDataSRP
   - hash:
       serializedVersion: 2
       Hash: fe6ec3bb4d4fdc2f62d5b6c9bce88278
@@ -1492,28 +1191,10 @@ ScriptsOnlyBuild:
     className: Interactor
   - hash:
       serializedVersion: 2
-      Hash: 7a550e80dc8d1ae1b4649a8d65a83a34
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NPCInteractable
-  - hash:
-      serializedVersion: 2
       Hash: 4878e735441f4041539853759559c86f
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
-  - hash:
-      serializedVersion: 2
-      Hash: e0cf060d3a0d1afae0c661ac42606ab8
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: ProbeVolume
-  - hash:
-      serializedVersion: 2
-      Hash: 4ea4c44e4bc7a8be3bb8497fc35e1049
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: RigTransform
   - hash:
       serializedVersion: 2
       Hash: d2ecd94550edf1b56aff07b1f4e41c57
@@ -1522,7 +1203,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerEnter2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 375a7a2dfb4910b03f7ed594dfa970ec
+      Hash: 32d783b7287c031ebf81e744121476cd
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: EnemyPatrol
@@ -1564,46 +1245,10 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: f9e62f3a7d9c2e2748f7fb68babb8bea
-    assemblyName: CFXRRuntime
-    namespaceName: CartoonFX
-    className: CFXR_EmissionBySurface
-  - hash:
-      serializedVersion: 2
-      Hash: f52f04072f153aaaaf41b2679212af90
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: MenuJoin
-  - hash:
-      serializedVersion: 2
-      Hash: 2f43860e745f8edade7bd381809e537b
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: UniversalAdditionalLightData
-  - hash:
-      serializedVersion: 2
-      Hash: 2cc5af0f17cef9c717df88c8c7e4c9aa
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine
-    className: LightAnchor
-  - hash:
-      serializedVersion: 2
       Hash: d0392b7f3f52d5af537ade186b4f51f1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
-  - hash:
-      serializedVersion: 2
-      Hash: c7461ddb2926b22edcbffe17bf941824
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: DecalProjector
-  - hash:
-      serializedVersion: 2
-      Hash: 81abcac4f15fd2dfc76ce16711dd5df5
-    assemblyName: CFXRRuntime
-    namespaceName: CartoonFX
-    className: CFXR_ParticleTextFontAsset
   - hash:
       serializedVersion: 2
       Hash: 9a174471d4db2c0c6d3ac47d2f818db1
@@ -1630,28 +1275,10 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 0237607a3a697cf130c195c13cb63a88
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: ColorGrading
-  - hash:
-      serializedVersion: 2
-      Hash: 24af424a437762b0c98a2238a41b2825
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerButton
-  - hash:
-      serializedVersion: 2
       Hash: 2c583ad0ac85d03e8700dd05fdcb46cb
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: Variables
-  - hash:
-      serializedVersion: 2
-      Hash: 9d9613c91f29a6f631f40f1e532fb7f6
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: CinemachineUniversalPixelPerfect
   - hash:
       serializedVersion: 2
       Hash: b30c8635462e66ac20f4241106119f77
@@ -1660,28 +1287,10 @@ ScriptsOnlyBuild:
     className: StateMachine
   - hash:
       serializedVersion: 2
-      Hash: fb91b0f531b5adecb53c856ab1c2f0aa
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: LensDistortion
-  - hash:
-      serializedVersion: 2
-      Hash: 7ec8b9099254520135a0697569b2d0a9
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: UniversalRendererData
-  - hash:
-      serializedVersion: 2
       Hash: 1553f209ae0b2d5d3a35685fca55f9c3
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 1362033cd491d66ad3cc206af29cc0de
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: Volume
   - hash:
       serializedVersion: 2
       Hash: af3dfb8173d913e75e79d343ad66a91c
@@ -1702,28 +1311,10 @@ ScriptsOnlyBuild:
     className: PlayerInputManager
   - hash:
       serializedVersion: 2
-      Hash: 2da4995a5d5d7f503a491b28504de32b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ItemSpawner
-  - hash:
-      serializedVersion: 2
       Hash: 02a47340661d2ea7c6d30e292cfef403
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnToggleValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 5a68f60e1cda65cfa97dd1fec1324352
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HealthManager
-  - hash:
-      serializedVersion: 2
-      Hash: f8564b4c2d4a7f5c7f1fcaab23156624
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: TwistCorrection
   - hash:
       serializedVersion: 2
       Hash: 8bf800a764665b085fe469e8aea7f167
@@ -1750,28 +1341,10 @@ ScriptsOnlyBuild:
     className: PlayerInput
   - hash:
       serializedVersion: 2
-      Hash: 8d7ab1303b1c14da5fdd62bf96ca6e89
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: FreeCamera
-  - hash:
-      serializedVersion: 2
       Hash: a3901985eb076c1c9b7562fca82ca3e0
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: SignalAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 424074d3010ce4ec3d155fbdba52a3b3
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: Grain
-  - hash:
-      serializedVersion: 2
-      Hash: 3586e7f4fd3cb20328f9458141273dab
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ScreenSpaceAmbientOcclusion
   - hash:
       serializedVersion: 2
       Hash: ed8e62f07ec878233f5493a335003493
@@ -1796,18 +1369,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseExitMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 75c6c9197c7a58bd598182947369a142
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Experimental.Rendering.Universal
-    className: RenderObjects
-  - hash:
-      serializedVersion: 2
-      Hash: c289e3c703128148060ed776747409c5
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SpaceshipController
   - hash:
       serializedVersion: 2
       Hash: b12640dfdb5966813e9dd838893e6c4a
@@ -1840,12 +1401,6 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: b72d9c057c0f9460abf04218f4cc4f0e
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerMessageBox
-  - hash:
-      serializedVersion: 2
       Hash: d7102e6ae9dbdde1faaad14f23b6d785
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -1858,40 +1413,10 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 27fcf46f05da57849d306826fb32eb18
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: SplitToning
-  - hash:
-      serializedVersion: 2
-      Hash: ff086b2fc4609f8b094e7c0435c6db0a
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessLayer
-  - hash:
-      serializedVersion: 2
-      Hash: da281dc879c7932e0c9669da88ae40c0
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 37dbaff32a49c70ff37b8bb15bd24c18
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: LensFlareComponentSRP
-  - hash:
-      serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
     className: EventSystem
-  - hash:
-      serializedVersion: 2
-      Hash: 3e2c437dc9700a676d1d8951574e4436
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GuidesController
   - hash:
       serializedVersion: 2
       Hash: 52db48e3be0a2b4f8b06f918fd1ebfbc
@@ -1936,12 +1461,6 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: eceeec9de8c79ee2c8d91c00ce728e82
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameSystems
-  - hash:
-      serializedVersion: 2
       Hash: 8e6dc3d79712ca4934f6d50c80f010b1
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1960,12 +1479,6 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: aa325cf8525986b1f48a28230d9f514a
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ShadowCaster2D
-  - hash:
-      serializedVersion: 2
       Hash: 19c7094e1c1b151057c372890e57f46f
     assemblyName: Unity.ProBuilder
     namespaceName: UnityEngine.ProBuilder
@@ -1976,24 +1489,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 7a0bde3ac6d739f92105cfe5613df2e0
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: UniversalAdditionalCameraData
-  - hash:
-      serializedVersion: 2
-      Hash: d24ef0b3a11672cc1f6940b1ae37283f
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Scene2HealthUpdater
-  - hash:
-      serializedVersion: 2
-      Hash: e9bfee93ebf3a7afacd9b5a36a892fc0
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: AutoExposure
   - hash:
       serializedVersion: 2
       Hash: d7c8092511063e0dae8106bfc8ed63dd
@@ -2008,10 +1503,10 @@ ScriptsOnlyBuild:
     className: UnityOnTransformParentChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 9d5bf088070839ce7647d1633043aefd
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WhiteCell
+      Hash: d41ab9b5ea92474f9c0a6937a0607ce1
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
   - hash:
       serializedVersion: 2
       Hash: 86344100c716167fb86137c127ca9eee
@@ -2024,12 +1519,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: VariablesAsset
-  - hash:
-      serializedVersion: 2
-      Hash: b810dfd26c061161a980f9a956f9a116
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ScreenSpaceShadows
   - hash:
       serializedVersion: 2
       Hash: 5b8b7230ad968399f6726aa1269dcdcb
@@ -2050,30 +1539,6 @@ ScriptsOnlyBuild:
     className: UnityOnControllerColliderHitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 10ffd5579f941e0f4946756d18f1a9df
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerValueTuple
-  - hash:
-      serializedVersion: 2
-      Hash: b462ce9b96d7f3f3a8a18557fbf44071
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: Bloom
-  - hash:
-      serializedVersion: 2
-      Hash: be60f316c7805f2fafe2115ca4c7dafc
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ForwardRendererData
-  - hash:
-      serializedVersion: 2
-      Hash: 5382156409d7c462c67822a5ee8d6c85
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerToggleHistory
-  - hash:
-      serializedVersion: 2
       Hash: 42284ecb06b05bfc619be3758fa5dd7a
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem
@@ -2086,22 +1551,10 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 110aa327d5a5138dcfcbacb388ae0acc
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessEffectSettings
-  - hash:
-      serializedVersion: 2
       Hash: 164a37e0bc379311785dd54beac44331
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.Editor
     className: InputDebuggerWindow
-  - hash:
-      serializedVersion: 2
-      Hash: 5dc51b0140815ee83ba613dce32f5b12
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerPersistentCanvas
   - hash:
       serializedVersion: 2
       Hash: 32bfadf4ab14c1e4298d945ac7dbee8f
@@ -2128,12 +1581,6 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 9dc274eab7228631e90d4757b13b768a
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ShadowsMidtonesHighlights
-  - hash:
-      serializedVersion: 2
       Hash: c78ed13f6b5a632d70d4f73f56ad81f2
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -2158,28 +1605,10 @@ ScriptsOnlyBuild:
     className: RectMask2D
   - hash:
       serializedVersion: 2
-      Hash: 4ee1e5f285c826248e282a4df1635b19
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ChromaticAberration
-  - hash:
-      serializedVersion: 2
       Hash: 9ebc0a3016506a0cbb7e0306dfcb9497
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: DictionaryAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 3594d8e9fcbd74e51eec80efbf16c599
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: LensDistortion
-  - hash:
-      serializedVersion: 2
-      Hash: 7d9543c1f1322bfae34b044b62676a76
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: Renderer2DData
   - hash:
       serializedVersion: 2
       Hash: e7e95903ca66d58e1a7cbd71f824e16d
@@ -2188,22 +1617,10 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 0f6b6107168e347e854c0107aa8cb9fb
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerEnumHistory
-  - hash:
-      serializedVersion: 2
       Hash: 9078325c2a6f6a2d9612ade897511860
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SpriteAsset
-  - hash:
-      serializedVersion: 2
-      Hash: e221e99f9950b0031d2b3f94ae850704
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SummonWhiteCells
   - hash:
       serializedVersion: 2
       Hash: ea1b87a3bfed09792e7720338241c7a0
@@ -2212,22 +1629,10 @@ ScriptsOnlyBuild:
     className: InputDeviceDebuggerWindow
   - hash:
       serializedVersion: 2
-      Hash: 80a72b656b55a7a1fc92e1a02151ea22
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: ScreenSpaceReflections
-  - hash:
-      serializedVersion: 2
       Hash: ff71db1a48de41d3a8a5ffdfae1ea607
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem
     className: InputSystemObject
-  - hash:
-      serializedVersion: 2
-      Hash: 05afd034bf7a074278a40ad9e97d8db4
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: Vignette
   - hash:
       serializedVersion: 2
       Hash: 0b63f6d3335e11939ce8790b904c8691
@@ -2260,12 +1665,6 @@ ScriptsOnlyBuild:
     className: UnityOnEndDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 76aa43cc6adae8454a66255a8113266d
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: AmbientOcclusion
-  - hash:
-      serializedVersion: 2
       Hash: 51b80d3734ea86b38e3101db98029e15
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -2296,18 +1695,6 @@ ScriptsOnlyBuild:
     className: PreferenceDictionary
   - hash:
       serializedVersion: 2
-      Hash: c058ff8faaff3e0da63b5433ebfb40bc
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: Tonemapping
-  - hash:
-      serializedVersion: 2
-      Hash: 8c3b6e24ca691fc0bf819c86e6b91dff
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: Light2D
-  - hash:
-      serializedVersion: 2
       Hash: 522f6865b4ec12522e602206785309f8
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -2318,12 +1705,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Slider
-  - hash:
-      serializedVersion: 2
-      Hash: 7d026ae582dc02c5edc3fc23b8c03ff7
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerVector3
   - hash:
       serializedVersion: 2
       Hash: 0c0b64d103fe555d830e8ca206abd12a
@@ -2338,24 +1719,6 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 4ea1bf258a208f00f70cf744bd7e56ce
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: Vignette
-  - hash:
-      serializedVersion: 2
-      Hash: 3e21c4fc1790539a1a5e53c6dae8099a
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: ChannelMixer
-  - hash:
-      serializedVersion: 2
-      Hash: c2e075ae7fe02aefbcb540a214408c90
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SceneSwitch
-  - hash:
-      serializedVersion: 2
       Hash: d82086405f46de14829f6b4bcbdd8fc9
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -2368,28 +1731,10 @@ ScriptsOnlyBuild:
     className: NavMeshSurface
   - hash:
       serializedVersion: 2
-      Hash: 953fad5c5ab1e7bb889420c434db93fe
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerFloatField
-  - hash:
-      serializedVersion: 2
-      Hash: 0a8453a9d6cce42552fd51eea56653a1
-    assemblyName: KinoBloom.Runtime
-    namespaceName: Kino
-    className: Bloom
-  - hash:
-      serializedVersion: 2
-      Hash: bccf042e84a1f5a4ed47c587fd78c6e3
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiReferentialConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: 6cac290ffa8e0f32236389de6afb8d7d
-    assemblyName: CFXRDemo
-    namespaceName: CartoonFX
-    className: CFXR_Demo_Rotate
+      Hash: b5007673bbbdb9d12597a1d8201370f5
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 2071f7ac454ae14eafecfd4041edae3a
@@ -2410,40 +1755,16 @@ ScriptsOnlyBuild:
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
-      Hash: 049f6aa84fe1cb5359c9338e96d0b07e
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: UIFoldout
-  - hash:
-      serializedVersion: 2
-      Hash: 8ec0e528ed473957d93c3244572ff4c8
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiParentConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: caf06d2412ca083a30dfdad7719fd538
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: RigBuilder
+      Hash: 540882762544409cc4530e60db00e951
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
   - hash:
       serializedVersion: 2
       Hash: 33656f83bb0079184b2206a69690ec46
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 8e867e9b6da8d6e002a3b7061e5f4ea2
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Readme
-  - hash:
-      serializedVersion: 2
-      Hash: b72839eb6e4350778dc879d98832aa2b
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerHBox
   - hash:
       serializedVersion: 2
       Hash: 2a9f30df5b93062f9d6c39dc7b291e77
@@ -2456,12 +1777,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpAsButtonMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: ef19274111491b6b8bcc6fd227f656f5
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerIndirectFloatField
   - hash:
       serializedVersion: 2
       Hash: 9104447b683bf70406fa01f12ecb564a
@@ -2488,18 +1803,6 @@ ScriptsOnlyBuild:
     className: NavMeshModifier
   - hash:
       serializedVersion: 2
-      Hash: ea5e0cb2f62c5bafc3dfb7bcdc9595e1
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering
-    className: DebugUpdater
-  - hash:
-      serializedVersion: 2
-      Hash: a908b098f2284663c0b9130e88844772
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerCanvas
-  - hash:
-      serializedVersion: 2
       Hash: 8ed5daadd237bb82e132790f75ffccaf
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.Editor
@@ -2518,28 +1821,10 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 67ba98f8a8977f3e60e5f0e049923033
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerColor
-  - hash:
-      serializedVersion: 2
       Hash: 3074afe1b03a0fb081e176a4ef1b9d09
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.Editor
     className: InputActionAssetEditor
-  - hash:
-      serializedVersion: 2
-      Hash: f73e3a97805e1e671360c632c4565101
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: FilmGrain
-  - hash:
-      serializedVersion: 2
-      Hash: 5124a0cfb9e335814a7a8eb88ed00b85
-    assemblyName: CFXRRuntime
-    namespaceName: CartoonFX
-    className: CFXR_Effect
   - hash:
       serializedVersion: 2
       Hash: 17142b03663387290480c82303274c02
@@ -2552,12 +1837,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 4392bfff79efe0630144f16ea4d656ab
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerObjectList
   - hash:
       serializedVersion: 2
       Hash: c4b85a67513b4f0cf7b5fb2d5ded04b0
@@ -2584,18 +1863,6 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: fdf716d1b5b6357f894b35bb8fcaebca
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: ChainIKConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: aa04b12e21463e06dcab176a2623cf83
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Dropoff
-  - hash:
-      serializedVersion: 2
       Hash: 6a0b5b415c00f783202fd1ae2d556cb2
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -2608,22 +1875,10 @@ ScriptsOnlyBuild:
     className: UnityOnPointerDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2f7cb833af938e5749df5eeb25923724
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiPositionConstraint
-  - hash:
-      serializedVersion: 2
       Hash: ee34255e3e86289bde9bad5e07b84cbc
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnScrollRectValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 2dad32af7d5faa52f0bb3d6670290c91
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: OverrideTransform
   - hash:
       serializedVersion: 2
       Hash: 830c3b545f6e6ee60a4cebab90516f2c
@@ -2644,46 +1899,16 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 6dfbdb53722d39d4e316ef33be90973c
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: PostProcessData
-  - hash:
-      serializedVersion: 2
-      Hash: 2fd42819c69acefd80a2bbcd49cbe8cf
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessProfile
-  - hash:
-      serializedVersion: 2
       Hash: dbe80c9dc024d18e75107a0b4da06133
     assemblyName: Unity.InputSystem
     namespaceName: UnityEngine.InputSystem.UI
     className: InputSystemUIInputModule
   - hash:
       serializedVersion: 2
-      Hash: 429ce0b58f9d2275bbc4ed740bee78ec
-    assemblyName: Unity.Postprocessing.Runtime
-    namespaceName: UnityEngine.Rendering.PostProcessing
-    className: PostProcessDebug
-  - hash:
-      serializedVersion: 2
-      Hash: b3eb5d73cd07eeee371bb1b136d026d6
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: 
-    className: FullScreenPassRendererFeature
-  - hash:
-      serializedVersion: 2
-      Hash: 01727a040aa965d7fae41c3c1e1d9ee5
-    assemblyName: Unity.RenderPipelines.Universal.Runtime
-    namespaceName: UnityEngine.Rendering.Universal
-    className: PaniniProjection
-  - hash:
-      serializedVersion: 2
-      Hash: ee8b73b9982e7044d7a1cd8558b7ef94
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HandleHits
+      Hash: d5cd7f207e91ca8336c65a577a6fb2a0
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
   - hash:
       serializedVersion: 2
       Hash: 568292fb7ea6c4f7a667e5ff76bc7e85
@@ -2692,31 +1917,13 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 711ba963e2b245a25de71beeaeeeb658
-    assemblyName: Unity.RenderPipelines.Core.Runtime
-    namespaceName: UnityEngine.Rendering.UI
-    className: DebugUIHandlerFoldout
-  - hash:
-      serializedVersion: 2
-      Hash: 2875aabd0b0eab484a5ff1048f8d06ba
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: BlendConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: f7eb0324729080ddaf63ba59c931745b
-    assemblyName: Unity.Animation.Rigging
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiRotationConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: 04eaacfaa5cb714828ade348f7c17c5c
+      Hash: eadf0a7886608bda5245a78ad93f37b4
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
   - hash:
       serializedVersion: 2
-      Hash: 5e194c9ad527cf866e209b5f8b0c01b7
+      Hash: 873f21eeadb647f1bda59c2be59892b6
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerController
@@ -2732,8 +1939,933 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5f70b16cd9acc9c1dd88b51b6ed89669
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerIndirectToggle
+  - hash:
+      serializedVersion: 2
+      Hash: b6792907b61f32faaf3e23f55e750107
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessResources
+  - hash:
+      serializedVersion: 2
+      Hash: 75563a97b24811c153add23104e2638f
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: XRSystemData
+  - hash:
+      serializedVersion: 2
+      Hash: 4ea1bf258a208f00f70cf744bd7e56ce
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Vignette
+  - hash:
+      serializedVersion: 2
+      Hash: f52f04072f153aaaaf41b2679212af90
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MenuJoin
+  - hash:
+      serializedVersion: 2
+      Hash: f9e62f3a7d9c2e2748f7fb68babb8bea
+    assemblyName: CFXRRuntime
+    namespaceName: CartoonFX
+    className: CFXR_EmissionBySurface
+  - hash:
+      serializedVersion: 2
+      Hash: fe111e830148f07e5735ebe7620f752e
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ChromaticAberration
+  - hash:
+      serializedVersion: 2
+      Hash: f7b03591365cbd6032c89661398e072a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SpawnHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 65e5085b96e7af5186f094c75c2d8f7f
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: Rig
+  - hash:
+      serializedVersion: 2
+      Hash: 27fcf46f05da57849d306826fb32eb18
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: SplitToning
+  - hash:
+      serializedVersion: 2
+      Hash: 95c8a8c68e664d4868755f06e7c55997
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: DepthOfField
+  - hash:
+      serializedVersion: 2
+      Hash: fce99de7ab700e0c4c466ebd583aa306
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ColorLookup
+  - hash:
+      serializedVersion: 2
+      Hash: 7d9543c1f1322bfae34b044b62676a76
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: Renderer2DData
+  - hash:
+      serializedVersion: 2
+      Hash: 8d7ab1303b1c14da5fdd62bf96ca6e89
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: FreeCamera
+  - hash:
+      serializedVersion: 2
+      Hash: 4ee1e5f285c826248e282a4df1635b19
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ChromaticAberration
+  - hash:
+      serializedVersion: 2
+      Hash: 006cf428550f7af7c78bbd72b6f9c495
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: DecalRendererFeature
+  - hash:
+      serializedVersion: 2
+      Hash: bccf042e84a1f5a4ed47c587fd78c6e3
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: MultiReferentialConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 3e1ba87a30ba656beab510dc2fa7cdc3
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: ProbeVolumeAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 2f7cb833af938e5749df5eeb25923724
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: MultiPositionConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 76aa43cc6adae8454a66255a8113266d
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: a9a9985bc600ab81586355efc506ee17
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: WhiteBalance
+  - hash:
+      serializedVersion: 2
+      Hash: 9968efb68bafd5f032879119c0d35a6c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Guide
+  - hash:
+      serializedVersion: 2
+      Hash: 86c7af8b5b2ba0d2fa1b4a455eaf4b3e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: InGameSystem
+  - hash:
+      serializedVersion: 2
+      Hash: 5124a0cfb9e335814a7a8eb88ed00b85
+    assemblyName: CFXRRuntime
+    namespaceName: CartoonFX
+    className: CFXR_Effect
+  - hash:
+      serializedVersion: 2
+      Hash: fbcf9f200f1b87e2ce04092a377bcb7a
+    assemblyName: Unity.Animation.Rigging.DocCodeExamples
+    namespaceName: DocCodeExamples
+    className: CustomPlayableGraphEvaluator
+  - hash:
+      serializedVersion: 2
+      Hash: 4457ce3d43ff730d542f03e62399ff70
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: BoneRenderer
+  - hash:
+      serializedVersion: 2
+      Hash: b72d9c057c0f9460abf04218f4cc4f0e
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerMessageBox
+  - hash:
+      serializedVersion: 2
+      Hash: 3e2c437dc9700a676d1d8951574e4436
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GuidesController
+  - hash:
+      serializedVersion: 2
+      Hash: 3d26478faca6e0bb31b2897cb8da4060
+    assemblyName: CFXRRuntime
+    namespaceName: CartoonFX
+    className: CFXR_ParticleText
+  - hash:
+      serializedVersion: 2
+      Hash: cde402e184a6ab530144506bc9d6a0af
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerVector4
+  - hash:
+      serializedVersion: 2
+      Hash: 49a282bea22e1d6e2c900a56e15db2f0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 0a8453a9d6cce42552fd51eea56653a1
+    assemblyName: KinoBloom.Runtime
+    namespaceName: Kino
+    className: Bloom
+  - hash:
+      serializedVersion: 2
+      Hash: e9bfee93ebf3a7afacd9b5a36a892fc0
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AutoExposure
+  - hash:
+      serializedVersion: 2
+      Hash: 3a5957dee23157abcc78371427f290c3
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: MultiAimConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: b810dfd26c061161a980f9a956f9a116
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ScreenSpaceShadows
+  - hash:
+      serializedVersion: 2
+      Hash: d771cabeaa363771c54f6c41824f7abb
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: LiftGammaGain
+  - hash:
+      serializedVersion: 2
+      Hash: ff086b2fc4609f8b094e7c0435c6db0a
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessLayer
+  - hash:
+      serializedVersion: 2
+      Hash: ef19274111491b6b8bcc6fd227f656f5
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerIndirectFloatField
+  - hash:
+      serializedVersion: 2
+      Hash: e8fd74e57e72e8e4ef28792881adb864
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerUIntField
+  - hash:
+      serializedVersion: 2
+      Hash: 049f6aa84fe1cb5359c9338e96d0b07e
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: UIFoldout
+  - hash:
+      serializedVersion: 2
+      Hash: ee8b73b9982e7044d7a1cd8558b7ef94
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HandleHits
+  - hash:
+      serializedVersion: 2
+      Hash: 6cac290ffa8e0f32236389de6afb8d7d
+    assemblyName: CFXRDemo
+    namespaceName: CartoonFX
+    className: CFXR_Demo_Rotate
+  - hash:
+      serializedVersion: 2
+      Hash: 994399575f7cccab343193b4333bcb6f
+    assemblyName: CFXRDemo
+    namespaceName: CartoonFX
+    className: CFXR_Demo
+  - hash:
+      serializedVersion: 2
+      Hash: ed2c59b75f8f3cd8df4cd4387d965e71
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerVector2
+  - hash:
+      serializedVersion: 2
+      Hash: 2f451ec7282a8c9375f5ce3f903c537c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FixLayer
+  - hash:
+      serializedVersion: 2
+      Hash: a9f0153fc675e1f4ade818b83e4ff0c1
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: VolumeComponent
+  - hash:
+      serializedVersion: 2
+      Hash: 5382156409d7c462c67822a5ee8d6c85
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerToggleHistory
+  - hash:
+      serializedVersion: 2
+      Hash: c65fb8f721cc4462e7a642974c37d3c0
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: DepthOfField
+  - hash:
+      serializedVersion: 2
+      Hash: 0e663c222bb83f92bce24cf73a0e299f
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: ProbeTouchupVolume
+  - hash:
+      serializedVersion: 2
+      Hash: 9dc274eab7228631e90d4757b13b768a
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ShadowsMidtonesHighlights
+  - hash:
+      serializedVersion: 2
+      Hash: e221e99f9950b0031d2b3f94ae850704
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SummonWhiteCells
+  - hash:
+      serializedVersion: 2
+      Hash: 429ce0b58f9d2275bbc4ed740bee78ec
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessDebug
+  - hash:
+      serializedVersion: 2
+      Hash: 3594d8e9fcbd74e51eec80efbf16c599
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: LensDistortion
+  - hash:
+      serializedVersion: 2
+      Hash: da281dc879c7932e0c9669da88ae40c0
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerGroup
+  - hash:
+      serializedVersion: 2
+      Hash: dbef050e89e5b8f0f31f714ec3eed4b7
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HeartBeat
+  - hash:
+      serializedVersion: 2
+      Hash: 2da4995a5d5d7f503a491b28504de32b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ItemSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 8fe6d4f095ce838f5396d1867140a9b6
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: CameraSwitcher
+  - hash:
+      serializedVersion: 2
+      Hash: fe0a072dbdcbca34d5003c5299de3aaf
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: SceneRenderPipeline
+  - hash:
+      serializedVersion: 2
+      Hash: 5a68f60e1cda65cfa97dd1fec1324352
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HealthManager
+  - hash:
+      serializedVersion: 2
+      Hash: e4b7831f0a9e91f079eb40ea24427631
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ColorAdjustments
+  - hash:
+      serializedVersion: 2
+      Hash: cb49ce80d4b69cb2ed30d83bfcb146ae
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerBitField
+  - hash:
+      serializedVersion: 2
+      Hash: d24ef0b3a11672cc1f6940b1ae37283f
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Scene2HealthUpdater
+  - hash:
+      serializedVersion: 2
+      Hash: c307188b084d7bae2b5fe7ace22248fb
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: UniversalRenderPipelineEditorResources
+  - hash:
+      serializedVersion: 2
+      Hash: a908b098f2284663c0b9130e88844772
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerCanvas
+  - hash:
+      serializedVersion: 2
+      Hash: 84323412974c60d703405a293123de1f
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MonsterController
+  - hash:
+      serializedVersion: 2
+      Hash: 424074d3010ce4ec3d155fbdba52a3b3
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Grain
+  - hash:
+      serializedVersion: 2
+      Hash: 3586e7f4fd3cb20328f9458141273dab
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ScreenSpaceAmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: 8c3b6e24ca691fc0bf819c86e6b91dff
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: Light2D
+  - hash:
+      serializedVersion: 2
+      Hash: c7461ddb2926b22edcbffe17bf941824
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: DecalProjector
+  - hash:
+      serializedVersion: 2
+      Hash: 1362033cd491d66ad3cc206af29cc0de
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: Volume
+  - hash:
+      serializedVersion: 2
+      Hash: 8c4221f581c8835b811922329b5efb5f
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WhiteCellPickup
+  - hash:
+      serializedVersion: 2
+      Hash: 2f43860e745f8edade7bd381809e537b
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: UniversalAdditionalLightData
+  - hash:
+      serializedVersion: 2
+      Hash: 6dfbdb53722d39d4e316ef33be90973c
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: PostProcessData
+  - hash:
+      serializedVersion: 2
+      Hash: 5dc51b0140815ee83ba613dce32f5b12
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerPersistentCanvas
+  - hash:
+      serializedVersion: 2
+      Hash: 47247e29ff0f727264f83a7f754b229c
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: LensFlareDataSRP
+  - hash:
+      serializedVersion: 2
+      Hash: 6b2b20d5352b9f1294595326f54bd3c2
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerObjectPopupField
+  - hash:
+      serializedVersion: 2
+      Hash: c058ff8faaff3e0da63b5433ebfb40bc
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: Tonemapping
+  - hash:
+      serializedVersion: 2
+      Hash: 7a0bde3ac6d739f92105cfe5613df2e0
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: UniversalAdditionalCameraData
+  - hash:
+      serializedVersion: 2
+      Hash: dbe4f05d59170430398f6453d7253fe5
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerWidget
+  - hash:
+      serializedVersion: 2
+      Hash: 415316b9bbc4e339c901a46503e2790b
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: VolumeProfile
+  - hash:
+      serializedVersion: 2
+      Hash: eceeec9de8c79ee2c8d91c00ce728e82
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameSystems
+  - hash:
+      serializedVersion: 2
+      Hash: 65d7429f900cd0d7d58933027dfdd825
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: CompositeShadowCaster2D
+  - hash:
+      serializedVersion: 2
+      Hash: 3851b298bdb429888427e6274e04be2a
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: ProbeReferenceVolumeProfile
+  - hash:
+      serializedVersion: 2
+      Hash: 2deddcdd5f664164bb803747210cbba2
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerRow
+  - hash:
+      serializedVersion: 2
+      Hash: 4ea4c44e4bc7a8be3bb8497fc35e1049
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: RigTransform
+  - hash:
+      serializedVersion: 2
+      Hash: b462ce9b96d7f3f3a8a18557fbf44071
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Bloom
+  - hash:
+      serializedVersion: 2
+      Hash: 5333e0be233f2bc1f18c4064b7483a04
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SpaceshipSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 158ea04b653ef20da50f27da42170155
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: ProbeVolumePerSceneData
+  - hash:
+      serializedVersion: 2
+      Hash: c833d8ddc320fe5153f6a88cef23c858
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerObject
+  - hash:
+      serializedVersion: 2
+      Hash: 1af7e9f99d251dfa1961d4b644ced380
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Experimental.Rendering.Universal
+    className: PixelPerfectCamera
+  - hash:
+      serializedVersion: 2
+      Hash: b72839eb6e4350778dc879d98832aa2b
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerHBox
+  - hash:
+      serializedVersion: 2
+      Hash: f73e3a97805e1e671360c632c4565101
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: FilmGrain
+  - hash:
+      serializedVersion: 2
+      Hash: 67ba98f8a8977f3e60e5f0e049923033
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerColor
+  - hash:
+      serializedVersion: 2
+      Hash: 4392bfff79efe0630144f16ea4d656ab
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerObjectList
+  - hash:
+      serializedVersion: 2
+      Hash: fdf716d1b5b6357f894b35bb8fcaebca
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: ChainIKConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 8ec0e528ed473957d93c3244572ff4c8
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: MultiParentConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 05afd034bf7a074278a40ad9e97d8db4
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: Vignette
+  - hash:
+      serializedVersion: 2
+      Hash: b88e78b6860b6061b2c681ea9b80b6bf
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerToggle
+  - hash:
+      serializedVersion: 2
+      Hash: 74ec5188daaec08302563b6fbc84a876
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ItemCollector
+  - hash:
+      serializedVersion: 2
+      Hash: 9f92e751d2286296361a1d06b9e90c1e
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: MotionBlur
+  - hash:
+      serializedVersion: 2
+      Hash: 7a550e80dc8d1ae1b4649a8d65a83a34
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NPCInteractable
+  - hash:
+      serializedVersion: 2
+      Hash: be60f316c7805f2fafe2115ca4c7dafc
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ForwardRendererData
+  - hash:
+      serializedVersion: 2
+      Hash: 2541c03d117382d4ebbe0bb0775dd2dc
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerProgressBar
+  - hash:
+      serializedVersion: 2
+      Hash: d61e8a2c27c190c240e1c5eb94884d0c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HUDManager
+  - hash:
+      serializedVersion: 2
+      Hash: 2875aabd0b0eab484a5ff1048f8d06ba
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: BlendConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: cb0e3392458ea666966becf4abb74d2b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SceneSwitch
+  - hash:
+      serializedVersion: 2
+      Hash: 80a72b656b55a7a1fc92e1a02151ea22
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ScreenSpaceReflections
+  - hash:
+      serializedVersion: 2
+      Hash: f8564b4c2d4a7f5c7f1fcaab23156624
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: TwistCorrection
+  - hash:
+      serializedVersion: 2
+      Hash: 9f27b94c3c17b0da0d39632b61a4b711
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: Bloom
+  - hash:
+      serializedVersion: 2
+      Hash: 3ec218b63ce6384a3b005c0cd27fcef4
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: DampedTransform
+  - hash:
+      serializedVersion: 2
+      Hash: 5c21f4846181ee6e245db1fcfb62fc0e
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerContainer
+  - hash:
+      serializedVersion: 2
+      Hash: da88d4f636db3fa472db0bd8d8a4e61d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MonsterSounds
+  - hash:
+      serializedVersion: 2
+      Hash: 75c6c9197c7a58bd598182947369a142
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Experimental.Rendering.Universal
+    className: RenderObjects
+  - hash:
+      serializedVersion: 2
+      Hash: ffaaa6b08bc8a8928411e8e402432358
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessVolume
+  - hash:
+      serializedVersion: 2
+      Hash: 24af424a437762b0c98a2238a41b2825
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerButton
+  - hash:
+      serializedVersion: 2
+      Hash: fb91b0f531b5adecb53c856ab1c2f0aa
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: LensDistortion
+  - hash:
+      serializedVersion: 2
+      Hash: bc9e5df4730dc2e3e91e4b81a4e8e6b1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameOver
+  - hash:
+      serializedVersion: 2
+      Hash: 01727a040aa965d7fae41c3c1e1d9ee5
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: PaniniProjection
+  - hash:
+      serializedVersion: 2
+      Hash: 9f355e210e7950e47ad1391c7681435b
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerEnumField
+  - hash:
+      serializedVersion: 2
+      Hash: 953fad5c5ab1e7bb889420c434db93fe
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerFloatField
+  - hash:
+      serializedVersion: 2
+      Hash: aa04b12e21463e06dcab176a2623cf83
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Dropoff
+  - hash:
+      serializedVersion: 2
+      Hash: 47f78e94e3df8d612cefa1307a19e2ce
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerValue
+  - hash:
+      serializedVersion: 2
+      Hash: 919dc7ec08f773fcae2d21a1e018bd99
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: MotionBlur
+  - hash:
+      serializedVersion: 2
+      Hash: 37dbaff32a49c70ff37b8bb15bd24c18
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: LensFlareComponentSRP
+  - hash:
+      serializedVersion: 2
+      Hash: 1cb038fd47d82e17c4a69c2697cc2ec0
+    assemblyName: Unity.Animation.Rigging.DocCodeExamples
+    namespaceName: DocCodeExamples
+    className: CustomRigBuilderEvaluator
+  - hash:
+      serializedVersion: 2
+      Hash: 0f6b6107168e347e854c0107aa8cb9fb
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerEnumHistory
+  - hash:
+      serializedVersion: 2
+      Hash: 8e867e9b6da8d6e002a3b7061e5f4ea2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Readme
+  - hash:
+      serializedVersion: 2
+      Hash: 110aa327d5a5138dcfcbacb388ae0acc
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessEffectSettings
+  - hash:
+      serializedVersion: 2
+      Hash: c0a2b4d13675f08bfb211e044c334e68
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerIntField
+  - hash:
+      serializedVersion: 2
+      Hash: 10ffd5579f941e0f4946756d18f1a9df
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerValueTuple
+  - hash:
+      serializedVersion: 2
+      Hash: b3eb5d73cd07eeee371bb1b136d026d6
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: 
+    className: FullScreenPassRendererFeature
+  - hash:
+      serializedVersion: 2
+      Hash: 2cc5af0f17cef9c717df88c8c7e4c9aa
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine
+    className: LightAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: aa325cf8525986b1f48a28230d9f514a
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ShadowCaster2D
+  - hash:
+      serializedVersion: 2
+      Hash: 9d9613c91f29a6f631f40f1e532fb7f6
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: CinemachineUniversalPixelPerfect
+  - hash:
+      serializedVersion: 2
+      Hash: 0237607a3a697cf130c195c13cb63a88
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ColorGrading
+  - hash:
+      serializedVersion: 2
+      Hash: 7d026ae582dc02c5edc3fc23b8c03ff7
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerVector3
+  - hash:
+      serializedVersion: 2
+      Hash: 3e21c4fc1790539a1a5e53c6dae8099a
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ChannelMixer
+  - hash:
+      serializedVersion: 2
+      Hash: e0cf060d3a0d1afae0c661ac42606ab8
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: ProbeVolume
+  - hash:
+      serializedVersion: 2
+      Hash: dffbd3da665050713c4b504a586a3ff5
+    assemblyName: CFXRDemo
+    namespaceName: CartoonFX
+    className: CFXR_Demo_Translate
+  - hash:
+      serializedVersion: 2
+      Hash: f7eb0324729080ddaf63ba59c931745b
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: MultiRotationConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 99431ab619f390cf9400bd06d3e1bdd3
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: UniversalRenderPipelineGlobalSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 5c2a5af4658ede896d072a8a641d706e
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: ColorCurves
+  - hash:
+      serializedVersion: 2
+      Hash: 711ba963e2b245a25de71beeaeeeb658
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerFoldout
+  - hash:
+      serializedVersion: 2
+      Hash: 2fd42819c69acefd80a2bbcd49cbe8cf
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessProfile
+  - hash:
+      serializedVersion: 2
+      Hash: 041d89bf0470df44922eec73e9bf30e5
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: TwoBoneIKConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 7ec8b9099254520135a0697569b2d0a9
+    assemblyName: Unity.RenderPipelines.Universal.Runtime
+    namespaceName: UnityEngine.Rendering.Universal
+    className: UniversalRendererData
+  - hash:
+      serializedVersion: 2
+      Hash: f5df081962c06a171f380eb236cd1f3c
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerVBox
+  - hash:
+      serializedVersion: 2
+      Hash: c289e3c703128148060ed776747409c5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SpaceshipController
+  - hash:
+      serializedVersion: 2
+      Hash: 58570e231c93c2f96918856759b81286
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering.UI
+    className: DebugUIHandlerPanel
+  - hash:
+      serializedVersion: 2
+      Hash: ea5e0cb2f62c5bafc3dfb7bcdc9595e1
+    assemblyName: Unity.RenderPipelines.Core.Runtime
+    namespaceName: UnityEngine.Rendering
+    className: DebugUpdater
+  - hash:
+      serializedVersion: 2
+      Hash: c0e97241d89036e9763306181a147128
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: TwistChainConstraint
+  - hash:
+      serializedVersion: 2
+      Hash: 2dad32af7d5faa52f0bb3d6670290c91
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: OverrideTransform
+  - hash:
+      serializedVersion: 2
+      Hash: caf06d2412ca083a30dfdad7719fd538
+    assemblyName: Unity.Animation.Rigging
+    namespaceName: UnityEngine.Animations.Rigging
+    className: RigBuilder
+  - hash:
+      serializedVersion: 2
+      Hash: 81abcac4f15fd2dfc76ce16711dd5df5
+    assemblyName: CFXRRuntime
+    namespaceName: CartoonFX
+    className: CFXR_ParticleTextFontAsset
   platform: 20
   scenePathNames:
   - Assets/Scenes/Heart.unity
   - Assets/Scenes/CaveLevel.unity
-  playerPath: D:/Projects/Team-24/Cellular Level/builds
+  - Assets/Scenes/GameOver.unity
+  playerPath: C:/Users/liang/Desktop/Cellular Level Beta
